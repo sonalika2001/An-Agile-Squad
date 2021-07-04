@@ -1,6 +1,7 @@
 import 'package:an_agile_squad/backend/firebase_repository.dart';
 import 'package:an_agile_squad/screens/home_screen.dart';
 import 'package:an_agile_squad/screens/login_screen.dart';
+import 'package:an_agile_squad/screens/search_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,10 @@ class _MyAppState extends State<MyApp> {
               return LoginScreen();
             }
           }),
+      initialRoute: '/',
+      routes: {
+        '/search_screen': (context) => SearchScreen(),
+      },
     );
   }
 }

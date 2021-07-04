@@ -68,4 +68,26 @@ class FirebaseMethods {
     await _googleSignIn.signOut();
     return await _auth.signOut();
   }
+
+//for search functionality
+//we pass user as argument so that we donot display the user's details when he/she searches for other users
+  Future<List<Client>> fetchAllUsers(User currentUser) async {
+    List<Client> userList = List<Client>();
+
+    QuerySnapshot querySnapshot =
+        await firestore.collection("users").get();
+    for (var i = 0; i < querySnapshot.docs.length; i++) {
+      if (querySnapshot.docs[i].id!= currentUser.uid) {
+        userList.add(Client.fromMap(querySnapshot.docs[i].data()));
+      }
+    }
+    return userList;
+  }
 }
+
+//firebaseUser - User
+// User - Client
+// documents - docs 
+// getDocuments - get 
+// documentID - Id 
+// data - data()
