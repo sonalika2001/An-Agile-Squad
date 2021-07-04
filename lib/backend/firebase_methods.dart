@@ -62,4 +62,10 @@ class FirebaseMethods {
         .doc(currentUser.uid)
         .set(client.toMap(client));
   }
+
+  Future<void> signOut() async{
+    await _googleSignIn.disconnect();
+    await _googleSignIn.signOut();
+    return await _auth.signOut();
+  }
 }
