@@ -2,6 +2,7 @@
 
 import 'package:an_agile_squad/backend/firebase_methods.dart';
 import 'package:an_agile_squad/models/client.dart';
+import 'package:an_agile_squad/models/message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseRepository {
@@ -19,4 +20,7 @@ class FirebaseRepository {
   Future<void> signOut() => _firebaseMethods.signOut();
 
   Future<List<Client>> fetchAllUsers(User user) => _firebaseMethods.fetchAllUsers(user);
+  Future<void> addMessageToDb(Message message, Client sender, Client receiver) =>
+      _firebaseMethods.addMessageToDb(message, sender, receiver);
 }
+

@@ -1,5 +1,6 @@
 //contains definitions of all firebase related functions
 import 'package:an_agile_squad/models/client.dart';
+import 'package:an_agile_squad/models/message.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -83,11 +84,30 @@ class FirebaseMethods {
     }
     return userList;
   }
+
+//messages in firebase db are stored in this order:
+//collection(named messages)->documents of user id(senders, recievers etc.)->collections of user ids that each user has been chatting with->collections of messages, each containing various fields such as message, user id, sender id,timestamp etc.
+  Future<void> addMessageToDb(
+      Message message, Client sender, Client receiver) async {
+    var map = message.toMap();
+
+    await firestore
+        .collection("messages")
+        .doc(message.senderId)
+        .collection(message.receiverId)
+        .add(map);
+    
+    return await firestore
+        .collection("messages")
+        .doc(message.receiverId)
+        .collection(message.senderId)
+        .add(map);
+  }
 }
 
 //firebaseUser - User
 // User - Client
-// documents - docs 
+// documents - doc 
 // getDocuments - get 
 // documentID - Id 
 // data - data()
