@@ -20,4 +20,9 @@ Gradient kfabGradient = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight);
 
+BoxDecoration kUserCircleDecor = BoxDecoration(
+  borderRadius: BorderRadius.circular(50),
+  color: kseparatorColor,
+);
+
 
