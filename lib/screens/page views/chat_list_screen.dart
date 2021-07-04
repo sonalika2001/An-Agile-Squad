@@ -18,7 +18,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     _repository.getCurrentUser().then((user) {
       setState(() {
@@ -45,7 +45,9 @@ class _ChatListScreenState extends State<ChatListScreen> {
             Icons.search,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/search_screen');
+          },
         ),
         IconButton(
           icon: Icon(
