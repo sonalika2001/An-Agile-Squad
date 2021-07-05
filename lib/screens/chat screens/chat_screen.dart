@@ -1,14 +1,21 @@
+import 'dart:io';
+
 import 'package:an_agile_squad/backend/firebase_repository.dart';
 import 'package:an_agile_squad/constants/strings.dart';
+import 'package:an_agile_squad/enum/view_state.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/models/message.dart';
 import 'package:an_agile_squad/constants/constants.dart';
+import 'package:an_agile_squad/provider/image_upload_provider.dart';
+import 'package:an_agile_squad/utils/utilities.dart';
 import 'package:an_agile_squad/widgets/app_bar.dart';
+import 'package:an_agile_squad/widgets/cached_image.dart';
 import 'package:an_agile_squad/widgets/modal_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emoji_picker/emoji_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class ChatScreen extends StatefulWidget {
   final Client receiver;
@@ -28,6 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
   ScrollController _listScrollController = ScrollController();
   bool showEmojiPicker = false;
   FocusNode textFieldFocus = FocusNode();
+  ImageUploadProvider _imageUploadProvider;
 
   @override
   void initState() {
@@ -62,6 +70,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _imageUploadProvider = Provider.of<ImageUploadProvider>(context);
     return Scaffold(
       backgroundColor: kblackColor,
       appBar: customAppBar(context),
@@ -70,6 +79,13 @@ class _ChatScreenState extends State<ChatScreen> {
           Flexible(
             child: messageList(),
           ),
+          _imageUploadProvider.getViewState == ViewState.LOADING
+              ? Container(
+                  alignment: Alignment.centerRight,
+                  margin: EdgeInsets.only(right: 15),
+                  child: CircularProgressIndicator(),
+                )
+              : Container(),
           chatControls(),
           showEmojiPicker ? Container(child: emojiContainer()) : Container(),
         ],
@@ -85,10 +101,12 @@ class _ChatScreenState extends State<ChatScreen> {
       columns: 7,
       onEmojiSelected: (emoji, category) {
         setState(() {
-          isWriting = true; //shows send button when emoji is typed and this enables us to send emojis!
+          isWriting =
+              true; //shows send button when emoji is typed and this enables us to send emojis!
         });
 
-        textFieldController.text = textFieldController.text + emoji.emoji; //appending emoji to the currently typed text
+        textFieldController.text = textFieldController.text +
+            emoji.emoji; //appending emoji to the currently typed text
       },
       recommendKeywords: ["face", "happy", "party", "sad"],
       numRecommended: 50,
@@ -165,13 +183,18 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   getMessage(Message message) {
-    return Text(
-      message.message,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 16.0,
-      ),
-    );
+    //handles the display of image type messages
+    return message.type != kmessageTypeImage
+        ? Text(
+            message.message,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+            ),
+          )
+        : message.photoUrl != null
+            ? CachedImage(url: message.photoUrl)
+            : Text("Url was null");
   }
 
 //layout of messages being received
@@ -245,6 +268,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         title: "Media",
                         subtitle: "Share Photos and Video",
                         icon: Icons.image,
+                        onTap: () => pickImage(
+                          ImageSource.gallery,
+                        ),
                       ),
                       ModalTile(
                           title: "File",
@@ -295,6 +321,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           Expanded(
             child: Stack(
+              alignment: Alignment.centerRight,
               children: [
                 TextField(
                   controller: textFieldController,
@@ -315,6 +342,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   decoration: kTextMessageInputDecor,
                 ),
                 IconButton(
+                  
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
                   onPressed: () {
@@ -338,7 +366,12 @@ class _ChatScreenState extends State<ChatScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Icon(Icons.record_voice_over),
                 ),
-          isWriting ? Container() : Icon(Icons.camera_alt),
+          isWriting
+              ? Container()
+              : GestureDetector(
+                  onTap: () => pickImage(ImageSource.camera),
+                  child: Icon(Icons.camera_alt),
+                ),
 
           //the send button which appears when user begins typing
           isWriting
@@ -357,6 +390,15 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
       ),
     );
+  }
+
+  pickImage(ImageSource source) async {
+    File selectedImage = await Utils.pickImage(source);
+    _repository.uploadImage(
+        image: selectedImage,
+        receiverId: widget.receiver.uid,
+        senderId: _currentUserID,
+        imageUploadProvider: _imageUploadProvider);
   }
 
   sendMessage() {

@@ -153,7 +153,7 @@ class _ChatListContainerState extends State<ChatListContainer> {
             mini: false,
             onTap: () {},
             title: Text(
-              "The CS Guy",
+              "me",
               style: TextStyle(
                   color: Colors.white, fontFamily: "Arial", fontSize: 19),
             ),
@@ -171,7 +171,7 @@ class _ChatListContainerState extends State<ChatListContainer> {
                   CircleAvatar(
                     maxRadius: 30,
                     backgroundColor: Colors.grey,
-                    backgroundImage: NetworkImage("https://yt3.ggpht.com/a/AGF-l7_zT8BuWwHTymaQaBptCy7WrsOD72gYGp-puw=s900-c-k-c0xffffffff-no-rj-mo"),
+                    backgroundImage: NetworkImage(""),
                   ),
                   Align(
                     alignment: Alignment.bottomRight,

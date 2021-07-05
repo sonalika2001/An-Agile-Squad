@@ -8,11 +8,13 @@ class ModalTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
+  final Function onTap;
 
   const ModalTile({
     @required this.title,
     @required this.subtitle,
     @required this.icon,
+    this.onTap,
   });
 
   @override
@@ -20,6 +22,7 @@ class ModalTile extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: CustomTile(
+        onTap: onTap,
         mini: false,
         leading: Container(
           margin: EdgeInsets.only(right: 10),
