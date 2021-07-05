@@ -1,5 +1,5 @@
 import 'package:an_agile_squad/screens/page%20views/chat_list_screen.dart';
-import 'package:an_agile_squad/utils/constants.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

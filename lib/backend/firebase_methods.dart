@@ -1,4 +1,5 @@
 //contains definitions of all firebase related functions
+import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/models/message.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
@@ -39,8 +40,8 @@ class FirebaseMethods {
 
   Future<bool> authenticateUser(User user) async {
     QuerySnapshot result = await firestore
-        .collection("users")
-        .where("email", isEqualTo: user.email)
+        .collection(kusersCollection)
+        .where(kemailField, isEqualTo: user.email)
         .get();
 
     final List<DocumentSnapshot> docs = result.docs;
@@ -59,7 +60,7 @@ class FirebaseMethods {
       username: username,
     );
     firestore
-        .collection("users")
+        .collection(kusersCollection)
         .doc(currentUser.uid)
         .set(client.toMap(client));
   }
@@ -76,7 +77,7 @@ class FirebaseMethods {
     List<Client> userList = List<Client>();
 
     QuerySnapshot querySnapshot =
-        await firestore.collection("users").get();
+        await firestore.collection(kusersCollection).get();
     for (var i = 0; i < querySnapshot.docs.length; i++) {
       if (querySnapshot.docs[i].id!= currentUser.uid) {
         userList.add(Client.fromMap(querySnapshot.docs[i].data()));
@@ -92,13 +93,13 @@ class FirebaseMethods {
     var map = message.toMap();
 
     await firestore
-        .collection("messages")
+        .collection(kmessagesCollection)
         .doc(message.senderId)
         .collection(message.receiverId)
         .add(map);
     
     return await firestore
-        .collection("messages")
+        .collection(kmessagesCollection)
         .doc(message.receiverId)
         .collection(message.senderId)
         .add(map);

@@ -1,5 +1,5 @@
 import 'package:an_agile_squad/backend/firebase_repository.dart';
-import 'package:an_agile_squad/utils/constants.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
 import 'package:an_agile_squad/widgets/app_bar.dart';
 import 'package:an_agile_squad/widgets/custom_tile.dart';

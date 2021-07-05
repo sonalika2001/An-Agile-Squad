@@ -1,11 +1,14 @@
 import 'package:an_agile_squad/backend/firebase_repository.dart';
+import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/models/message.dart';
-import 'package:an_agile_squad/utils/constants.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/widgets/app_bar.dart';
 import 'package:an_agile_squad/widgets/modal_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:emoji_picker/emoji_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class ChatScreen extends StatefulWidget {
   final Client receiver;
@@ -22,6 +25,9 @@ class _ChatScreenState extends State<ChatScreen> {
   String _currentUserID;
   bool isWriting = false;
   FirebaseRepository _repository = FirebaseRepository();
+  ScrollController _listScrollController = ScrollController();
+  bool showEmojiPicker = false;
+  FocusNode textFieldFocus = FocusNode();
 
   @override
   void initState() {
@@ -40,6 +46,20 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
+  showKeyboard() => textFieldFocus.requestFocus();
+  hideKeyboard() => textFieldFocus.unfocus();
+  hideEmojiContainer() {
+    setState(() {
+      showEmojiPicker = false;
+    });
+  }
+
+  showEmojiContainer() {
+    setState(() {
+      showEmojiPicker = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,47 +71,86 @@ class _ChatScreenState extends State<ChatScreen> {
             child: messageList(),
           ),
           chatControls(),
+          showEmojiPicker ? Container(child: emojiContainer()) : Container(),
         ],
       ),
+    );
+  }
+
+  emojiContainer() {
+    return EmojiPicker(
+      bgColor: kseparatorColor,
+      indicatorColor: kblueColor,
+      rows: 3,
+      columns: 7,
+      onEmojiSelected: (emoji, category) {
+        setState(() {
+          isWriting = true; //shows send button when emoji is typed and this enables us to send emojis!
+        });
+
+        textFieldController.text = textFieldController.text + emoji.emoji; //appending emoji to the currently typed text
+      },
+      recommendKeywords: ["face", "happy", "party", "sad"],
+      numRecommended: 50,
     );
   }
 
   //displays the list of messages that the user sends
   Widget messageList() {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('messages').doc(_currentUserID).collection(widget.receiver.uid).orderBy("timestamp",descending: true ).snapshots(),
-      builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
-        if(snapshot.data==null){
-          return Center(child: CircularProgressIndicator(),);
+      stream: FirebaseFirestore.instance
+          .collection(kmessagesCollection)
+          .doc(_currentUserID)
+          .collection(widget.receiver.uid)
+          .orderBy(ktimeStampField, descending: true)
+          .snapshots(),
+      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.data == null) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         }
+        //a callback which is called after a frame is rendered and it is called exactly once in its lifetime.But, if some changes are made to the UI, then the frame is rendered once again and the callback is called. This is used for automatically scrolling to the bottom of the chat screen on recieving a message,or while typing a message.
+        // SchedulerBinding.instance.addPostFrameCallback((_) {
+        //   _listScrollController.animateTo(
+        //     _listScrollController.position
+        //         .minScrollExtent, //minScrollExtent scrolls it to the bottom of the list
+        //     duration: Duration(milliseconds: 250),
+        //     curve: Curves.easeInOut,
+        //   );
+        // });
+
         return ListView.builder(
-      padding: EdgeInsets.all(10),
-      itemCount: snapshot.data.docs.length,
-      itemBuilder: (context, index) {
-        return chatMessageItem(snapshot.data.docs[index]);
-      },
-    );
+          padding: EdgeInsets.all(10),
+          itemCount: snapshot.data.docs.length,
+          reverse: true,
+          controller: _listScrollController,
+          itemBuilder: (context, index) {
+            return chatMessageItem(snapshot.data.docs[index]);
+          },
+        );
       },
     );
   }
 
- Widget chatMessageItem(DocumentSnapshot snapshot) {
+  Widget chatMessageItem(DocumentSnapshot snapshot) {
+    Message _message = Message.fromMap(snapshot.data());
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15),
       child: Container(
         //aligning the messages sent and recieved
-        alignment: snapshot['senderId'] == _currentUserID
+        alignment: _message.senderId == _currentUserID
             ? Alignment.centerRight
             : Alignment.centerLeft,
-        child: snapshot['senderId'] == _currentUserID
-            ? senderLayout(snapshot)
-            : receiverLayout(snapshot),
+        child: _message.senderId == _currentUserID
+            ? senderLayout(_message)
+            : receiverLayout(_message),
       ),
     );
   }
 
 //layout of messages being sent
-  Widget senderLayout(DocumentSnapshot snapshot) {
+  Widget senderLayout(Message message) {
     return Container(
       margin: EdgeInsets.only(top: 12),
       constraints: BoxConstraints(
@@ -100,14 +159,14 @@ class _ChatScreenState extends State<ChatScreen> {
       decoration: kMessageDisplayDecor,
       child: Padding(
         padding: EdgeInsets.all(10),
-        child: getMessage(snapshot),
+        child: getMessage(message),
       ),
     );
   }
 
- getMessage(DocumentSnapshot snapshot) {
+  getMessage(Message message) {
     return Text(
-      snapshot['message'],
+      message.message,
       style: TextStyle(
         color: Colors.white,
         fontSize: 16.0,
@@ -116,7 +175,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
 //layout of messages being received
-  Widget receiverLayout(DocumentSnapshot snapshot) {
+  Widget receiverLayout(Message message) {
     Radius messageRadius = Radius.circular(10);
 
     return Container(
@@ -133,7 +192,7 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       child: Padding(
         padding: EdgeInsets.all(10),
-        child: getMessage(snapshot),
+        child: getMessage(message),
       ),
     );
   }
@@ -235,21 +294,41 @@ class _ChatScreenState extends State<ChatScreen> {
             width: 5,
           ),
           Expanded(
-            child: TextField(
-              controller: textFieldController,
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              //to display send icon to the right of the textfield when user starts typing a message
-              //makes sure that user isn't sending empty messages
-              onChanged: (val) {
-                (val.length > 0 &&
-                        val.trim() !=
-                            "") //trim function trims all blank spaces typed by the user to a blank message
-                    ? setWritingTo(true)
-                    : setWritingTo(false);
-              },
-              decoration: kTextMessageInputDecor,
+            child: Stack(
+              children: [
+                TextField(
+                  controller: textFieldController,
+                  focusNode: textFieldFocus,
+                  onTap: () => hideEmojiContainer(),
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                  //to display send icon to the right of the textfield when user starts typing a message
+                  //makes sure that user isn't sending empty messages
+                  onChanged: (val) {
+                    (val.length > 0 &&
+                            val.trim() !=
+                                "") //trim function trims all blank spaces typed by the user to a blank message
+                        ? setWritingTo(true)
+                        : setWritingTo(false);
+                  },
+                  decoration: kTextMessageInputDecor,
+                ),
+                IconButton(
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  onPressed: () {
+                    if (!showEmojiPicker) {
+                      hideKeyboard();
+                      showEmojiContainer();
+                    } else {
+                      hideEmojiContainer();
+                      showKeyboard();
+                    }
+                  },
+                  icon: Icon(Icons.face),
+                ),
+              ],
             ),
           ),
           //these icons are displayed only when the user is not typing
@@ -287,14 +366,14 @@ class _ChatScreenState extends State<ChatScreen> {
       receiverId: widget.receiver.uid,
       senderId: sender.uid,
       message: text,
-      timestamp: FieldValue.serverTimestamp(),
+      timestamp: Timestamp.now(),
       type: 'text',
     );
 
     setState(() {
       isWriting = false;
     });
-
+    text = "";
     _repository.addMessageToDb(_message, sender, widget.receiver);
   }
 

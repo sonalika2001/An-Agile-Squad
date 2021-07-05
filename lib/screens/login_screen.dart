@@ -1,6 +1,6 @@
 import 'package:an_agile_squad/backend/firebase_repository.dart';
 import 'package:an_agile_squad/screens/home_screen.dart';
-import 'package:an_agile_squad/utils/constants.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';

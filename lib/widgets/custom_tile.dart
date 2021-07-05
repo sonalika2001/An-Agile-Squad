@@ -1,4 +1,4 @@
-import 'package:an_agile_squad/utils/constants.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 

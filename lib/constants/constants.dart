@@ -38,10 +38,8 @@ InputDecoration kTextMessageInputDecor = InputDecoration(
   contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
   filled: true,
   fillColor: kseparatorColor,
-  suffixIcon: GestureDetector(
-    onTap: () {},
-    child: Icon(Icons.face),
-  ),
+  
+  
 );
 
 Radius kmessageRadius = Radius.circular(10); 
