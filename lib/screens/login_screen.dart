@@ -1,6 +1,8 @@
-import 'package:an_agile_squad/backend/firebase_repository.dart';
+import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/backend/chat_methods.dart';
+import 'package:an_agile_squad/backend/storage_methods.dart';
 import 'package:an_agile_squad/screens/home_screen.dart';
-import 'package:an_agile_squad/utils/constants.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
@@ -11,8 +13,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  FirebaseRepository _repository = FirebaseRepository();
   bool isLoginPressed = false;
+   AuthMethods authMethods = AuthMethods();
+  StorageMethods storageMethods = StorageMethods();
+  ChatMethods chatMethods = ChatMethods();
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       isLoginPressed = true;
     });
-    _repository.getSignIn().then((User user) {
+    authMethods.signIn().then((User user) {
       if (user != null) {
         authenticateUser(user);
       } else {
@@ -65,14 +70,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void authenticateUser(User user) {
-    _repository.authenticateUser(user).then((isNewUser) {
+    authMethods.authenticateUser(user).then((isNewUser) {
 
       setState(() {
         isLoginPressed = false;
       });
       
       if (isNewUser) {
-        _repository.addDataToDb(user).then((value) {
+        authMethods.addDataToDb(user).then((value) {
           Navigator.pushReplacement(context, MaterialPageRoute(
             builder: (context) {
               return HomeScreen();

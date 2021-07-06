@@ -1,21 +1,34 @@
-//contains definitions of all firebase related functions
+import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class FirebaseMethods {
+class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   GoogleSignIn _googleSignIn = GoogleSignIn();
   static final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  StorageReference _storageReference;
 
   Client client = Client();
+  static final CollectionReference _userCollection =
+      firestore.collection(kusersCollection);
 
-  Future<User> currentUser() async {
+  Future<User> getCurrentUser() async {
     User currentUser;
     currentUser =  _auth.currentUser;
     return currentUser;
+  }
+
+  Future<Client> getUserDetails() async {
+    User currentUser = await getCurrentUser();
+
+    DocumentSnapshot documentSnapshot =
+        await _userCollection.doc(currentUser.uid).get();
+
+    return Client.fromMap(documentSnapshot.data());
   }
 
   Future<User> signIn() async {
@@ -38,8 +51,8 @@ class FirebaseMethods {
 
   Future<bool> authenticateUser(User user) async {
     QuerySnapshot result = await firestore
-        .collection("users")
-        .where("email", isEqualTo: user.email)
+        .collection(kusersCollection)
+        .where(kemailField, isEqualTo: user.email)
         .get();
 
     final List<DocumentSnapshot> docs = result.docs;
@@ -58,14 +71,29 @@ class FirebaseMethods {
       username: username,
     );
     firestore
-        .collection("users")
+        .collection(kusersCollection)
         .doc(currentUser.uid)
         .set(client.toMap(client));
   }
 
-  Future<void> signOut() async{
+  Future<void> signOut() async {
     await _googleSignIn.disconnect();
     await _googleSignIn.signOut();
     return await _auth.signOut();
+  }
+
+  //for search functionality
+//we pass user as argument so that we donot display the user's details when he/she searches for other users
+  Future<List<Client>> fetchAllUsers(User currentUser) async {
+    List<Client> userList = List<Client>();
+
+    QuerySnapshot querySnapshot =
+        await firestore.collection(kusersCollection).get();
+    for (var i = 0; i < querySnapshot.docs.length; i++) {
+      if (querySnapshot.docs[i].id != currentUser.uid) {
+        userList.add(Client.fromMap(querySnapshot.docs[i].data()));
+      }
+    }
+    return userList;
   }
 }
