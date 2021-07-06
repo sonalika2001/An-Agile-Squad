@@ -1,3 +1,5 @@
+import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/enum/user_state.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
 import 'package:an_agile_squad/screens/chat_list_screen.dart';
 import 'package:an_agile_squad/constants/constants.dart';
@@ -13,22 +15,70 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+//WidgetsBindingObserver is used to keep track of the app lifecycle. This is reflected by the online presense indicator
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   PageController pageController;
   int _page = 0;
   double _labelFontSize = 10;
   UserProvider userProvider;
+  AuthMethods authMethods = AuthMethods();
 
   @override
   void initState() {
     super.initState();
     //SchedulerBinding is used because initState is called even before the first screen is drawn. Hence, no context is available at first, this throws an error. Adding a postFrmeCallback calls the below function after the home screen has been architected.
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      userProvider = Provider.of<UserProvider>(context, listen: false); //gets user details from db when home screen is loaded
+      userProvider = Provider.of<UserProvider>(context,
+          listen: false); //gets user details from db when home screen is loaded
       userProvider.refreshUser();
+      //initialising the user state when app is opened
+      authMethods.setUserState(userProvider.getUser.uid, UserState.Online);
     });
 
+    WidgetsBinding.instance.addObserver(this); //adding an observer
+
     pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance
+        .removeObserver(this); //removes observer when home screen is disposed
+  }
+
+//helps keep track of the app lifecycle using the observer. We utilise this to create the functionality of the online presence indicator
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    String currentUserId =
+        (userProvider != null && userProvider.getUser != null)
+            ? userProvider.getUser.uid
+            : "";
+
+    super.didChangeAppLifecycleState(state);
+
+    switch (state) {
+      case AppLifecycleState.resumed:
+        currentUserId != null
+            ? authMethods.setUserState(currentUserId, UserState.Online)
+            : print("resume state");
+        break;
+      case AppLifecycleState.inactive:
+        currentUserId != null
+            ? authMethods.setUserState(currentUserId, UserState.Offline)
+            : print("inactive state");
+        break;
+      case AppLifecycleState.paused: //if the user is not interacting with the app even though it is open
+        currentUserId != null
+            ? authMethods.setUserState(currentUserId, UserState.Waiting)
+            : print("paused state");
+        break;
+      case AppLifecycleState.detached:
+        currentUserId != null
+            ? authMethods.setUserState(currentUserId, UserState.Offline)
+            : print("detached state");
+        break;
+    }
   }
 
   void onPageChanged(int page) {
@@ -37,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void navigationTapped(int page){
+  void navigationTapped(int page) {
     pageController.jumpToPage(page);
   }
 
@@ -45,13 +95,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     //wrapping the scaffold with a pickup layout replaces the home screen with the pickup screen seamlessly when a call is being received. Else, it displays the home screen.
     return PickupLayout(
-          scaffold: Scaffold(
+      scaffold: Scaffold(
         backgroundColor: kblackColor,
         body: PageView(
           children: <Widget>[
-           Container(
-             child: ChatListScreen(),
-           ),
+            Container(
+              child: ChatListScreen(),
+            ),
             Center(
               child: Text('Call Logs'),
             ),
@@ -76,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: Text(
                     'Chats',
                     style: TextStyle(
-                      fontSize:_labelFontSize,
+                      fontSize: _labelFontSize,
                       color: (_page == 0) ? klightBlueColor : kgreyColor,
                     ),
                   ),
@@ -89,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: Text(
                     'Call Log',
                     style: TextStyle(
-                      fontSize:_labelFontSize,
+                      fontSize: _labelFontSize,
                       color: (_page == 1) ? klightBlueColor : kgreyColor,
                     ),
                   ),
@@ -102,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: Text(
                     'Contact',
                     style: TextStyle(
-                      fontSize:_labelFontSize,
+                      fontSize: _labelFontSize,
                       color: (_page == 2) ? klightBlueColor : kgreyColor,
                     ),
                   ),
