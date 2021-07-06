@@ -7,6 +7,8 @@ import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/models/message.dart';
 import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/provider/image_upload_provider.dart';
+import 'package:an_agile_squad/utils/call_utilities.dart';
+import 'package:an_agile_squad/utils/permissions.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
 import 'package:an_agile_squad/widgets/app_bar.dart';
 import 'package:an_agile_squad/widgets/cached_image.dart';
@@ -193,7 +195,12 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           )
         : message.photoUrl != null
-            ? CachedImage(url: message.photoUrl)
+            ? CachedImage(
+                message.photoUrl,
+                height: 250,
+                width: 250,
+                radius: 10,
+              )
             : Text("Url was null");
   }
 
@@ -342,7 +349,6 @@ class _ChatScreenState extends State<ChatScreen> {
                   decoration: kTextMessageInputDecor,
                 ),
                 IconButton(
-                  
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
                   onPressed: () {
@@ -438,7 +444,14 @@ class _ChatScreenState extends State<ChatScreen> {
           icon: Icon(
             Icons.video_call,
           ),
-          onPressed: () {},
+          onPressed: () async =>
+              await Permissions.cameraAndMicrophonePermissionsGranted()
+                  ? CallUtils.dial(
+                      from: sender,
+                      to: widget.receiver,
+                      context: context,
+                    )
+                  : {},
         ),
         IconButton(
           icon: Icon(

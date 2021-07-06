@@ -19,12 +19,27 @@ class FirebaseMethods {
   StorageReference _storageReference;
 
   Client client = Client();
+  static final CollectionReference _userCollection =
+      firestore.collection(kusersCollection);
 
-  Future<User> currentUser() async {
+  
+
+  Future<User> getCurrentUser() async {
     User currentUser;
-    currentUser =_auth.currentUser;
+    currentUser = await _auth.currentUser;
     return currentUser;
   }
+
+  Future<Client> getUserDetails() async {
+    User currentUser = await getCurrentUser();
+
+    DocumentSnapshot documentSnapshot =
+        await _userCollection.doc(currentUser.uid).get();
+
+    return Client.fromMap(documentSnapshot.data());
+  }
+
+  
 
   Future<User> signIn() async {
     //Starts the interactive sign-in process and returns a Future instance i.e the user's response
@@ -169,6 +184,8 @@ class FirebaseMethods {
 
     setImageMsg(url, receiverId, senderId);
   }
+
+  
 }
 
 //firebaseUser - User

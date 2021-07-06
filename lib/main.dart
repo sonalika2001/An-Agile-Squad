@@ -1,5 +1,6 @@
 import 'package:an_agile_squad/backend/firebase_repository.dart';
 import 'package:an_agile_squad/provider/image_upload_provider.dart';
+import 'package:an_agile_squad/provider/user_provider.dart';
 import 'package:an_agile_squad/screens/home_screen.dart';
 import 'package:an_agile_squad/screens/login_screen.dart';
 import 'package:an_agile_squad/screens/search_screen.dart';
@@ -23,12 +24,14 @@ class _MyAppState extends State<MyApp> {
   FirebaseRepository _repository = FirebaseRepository();
   @override
   Widget build(BuildContext context) {
-    
-   // _repository.signOut();
+    // _repository.signOut();
 
-    return ChangeNotifierProvider<ImageUploadProvider>(
-      create: (context) => ImageUploadProvider(),
-          child: MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ImageUploadProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: MaterialApp(
         title: "An Agile Squad",
         debugShowCheckedModeBanner: false,
         home: FutureBuilder(
@@ -52,4 +55,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
- 

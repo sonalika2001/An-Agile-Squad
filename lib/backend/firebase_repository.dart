@@ -11,9 +11,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 class FirebaseRepository {
   FirebaseMethods _firebaseMethods = FirebaseMethods();
 
-  Future<User> getCurrentUser() => _firebaseMethods.currentUser();
+  Future<User> getCurrentUser() => _firebaseMethods.getCurrentUser();
 
   Future<User> getSignIn() => _firebaseMethods.signIn();
+
+  Future<Client> getUserDetails() => _firebaseMethods.getUserDetails();
 
   Future<bool> authenticateUser(User user) =>
       _firebaseMethods.authenticateUser(user);
