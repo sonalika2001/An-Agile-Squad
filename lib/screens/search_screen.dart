@@ -1,4 +1,6 @@
-import 'package:an_agile_squad/backend/firebase_repository.dart';
+import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/backend/chat_methods.dart';
+import 'package:an_agile_squad/backend/storage_methods.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/widgets/custom_tile.dart';
@@ -15,7 +17,10 @@ class SearchScreen extends StatefulWidget {
 
 //for instant search results, we query all the data and save it in a list.
 class _SearchScreenState extends State<SearchScreen> {
-  FirebaseRepository _repository = FirebaseRepository();
+   AuthMethods authMethods = AuthMethods();
+  StorageMethods storageMethods = StorageMethods();
+  ChatMethods chatMethods = ChatMethods();
+
 
   List<Client> userList;
   String query = "";
@@ -27,8 +32,8 @@ class _SearchScreenState extends State<SearchScreen> {
     
     super.initState();
 
-    _repository.getCurrentUser().then((User user) {
-      _repository.fetchAllUsers(user).then((List<Client> list) {
+    authMethods.getCurrentUser().then((User user) {
+      authMethods.fetchAllUsers(user).then((List<Client> list) {
         setState(() {
           userList = list;
         });

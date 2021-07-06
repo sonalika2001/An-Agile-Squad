@@ -1,6 +1,7 @@
 import 'dart:io';
-
-import 'package:an_agile_squad/backend/firebase_repository.dart';
+import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/backend/chat_methods.dart';
+import 'package:an_agile_squad/backend/storage_methods.dart';
 import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/enum/view_state.dart';
 import 'package:an_agile_squad/models/client.dart';
@@ -34,17 +35,19 @@ class _ChatScreenState extends State<ChatScreen> {
   Client sender;
   String _currentUserID;
   bool isWriting = false;
-  FirebaseRepository _repository = FirebaseRepository();
   ScrollController _listScrollController = ScrollController();
   bool showEmojiPicker = false;
   FocusNode textFieldFocus = FocusNode();
   ImageUploadProvider _imageUploadProvider;
+  AuthMethods authMethods = AuthMethods();
+  StorageMethods storageMethods = StorageMethods();
+  ChatMethods chatMethods = ChatMethods();
 
   @override
   void initState() {
     super.initState();
 
-    _repository.getCurrentUser().then((user) {
+    authMethods.getCurrentUser().then((user) {
       _currentUserID = user.uid;
 
       setState(() {
@@ -401,11 +404,11 @@ class _ChatScreenState extends State<ChatScreen> {
 
   pickImage(ImageSource source) async {
     File selectedImage = await Utils.pickImage(source);
-    _repository.uploadImage(
-        image: selectedImage,
-        receiverId: widget.receiver.uid,
-        senderId: _currentUserID,
-        imageUploadProvider: _imageUploadProvider);
+    storageMethods.uploadImage(
+        selectedImage,
+       widget.receiver.uid,
+       _currentUserID,
+      _imageUploadProvider);
   }
 
   sendMessage() {
@@ -423,7 +426,7 @@ class _ChatScreenState extends State<ChatScreen> {
       isWriting = false;
     });
     text = "";
-    _repository.addMessageToDb(_message, sender, widget.receiver);
+    chatMethods.addMessageToDb(_message, sender, widget.receiver);
   }
 
   CustomAppBar customAppBar(context) {

@@ -1,4 +1,6 @@
-import 'package:an_agile_squad/backend/firebase_repository.dart';
+import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/backend/chat_methods.dart';
+import 'package:an_agile_squad/backend/storage_methods.dart';
 import 'package:an_agile_squad/provider/image_upload_provider.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
 import 'package:an_agile_squad/screens/home_screen.dart';
@@ -21,7 +23,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  FirebaseRepository _repository = FirebaseRepository();
+   AuthMethods authMethods = AuthMethods();
+  StorageMethods storageMethods = StorageMethods();
+  ChatMethods chatMethods = ChatMethods();
+
   @override
   Widget build(BuildContext context) {
     // _repository.signOut();
@@ -35,7 +40,7 @@ class _MyAppState extends State<MyApp> {
         title: "An Agile Squad",
         debugShowCheckedModeBanner: false,
         home: FutureBuilder(
-            future: _repository.getCurrentUser(),
+            future: authMethods.getCurrentUser(),
             builder: (context, AsyncSnapshot<User> snapshot) {
               //returns home screen if the user isn't logged in, else login screen
               if (snapshot.hasData) {

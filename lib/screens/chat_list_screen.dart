@@ -1,4 +1,7 @@
-import 'package:an_agile_squad/backend/firebase_repository.dart';
+
+import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/backend/chat_methods.dart';
+import 'package:an_agile_squad/backend/storage_methods.dart';
 import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
 import 'package:an_agile_squad/widgets/app_bar.dart';
@@ -10,16 +13,19 @@ class ChatListScreen extends StatefulWidget {
   _ChatListScreenState createState() => _ChatListScreenState();
 }
 
-final FirebaseRepository _repository = FirebaseRepository();
 
 class _ChatListScreenState extends State<ChatListScreen> {
   String currentUserID;
   String initials;
+   AuthMethods authMethods = AuthMethods();
+  StorageMethods storageMethods = StorageMethods();
+  ChatMethods chatMethods = ChatMethods();
+
 
   @override
   void initState() {
     super.initState();
-    _repository.getCurrentUser().then((user) {
+    authMethods.getCurrentUser().then((user) {
       setState(() {
         currentUserID = user.uid;
         initials = Utils.getInitials(user.displayName);
