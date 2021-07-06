@@ -18,7 +18,6 @@ class _ChatListScreenState extends State<ChatListScreen> {
 
   @override
   void initState() {
-    
     super.initState();
     _repository.getCurrentUser().then((user) {
       setState(() {
@@ -37,7 +36,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
         ),
         onPressed: () {},
       ),
-      title: UserCircle(initials),
+      title: UserCircle((initials != null) ? initials : {}),
       centerTitle: true,
       actions: <Widget>[
         IconButton(
@@ -118,8 +117,7 @@ class NewChatButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          gradient:kfabGradient,
-          borderRadius: BorderRadius.circular(50)),
+          gradient: kfabGradient, borderRadius: BorderRadius.circular(50)),
       child: Icon(
         Icons.edit,
         color: Colors.white,
@@ -132,11 +130,10 @@ class NewChatButton extends StatelessWidget {
 
 //these contain the chat list members
 class ChatListContainer extends StatefulWidget {
-
   final String currentUserID;
 
-  ChatListContainer(this.currentUserID); 
- 
+  ChatListContainer(this.currentUserID);
+
   @override
   _ChatListContainerState createState() => _ChatListContainerState();
 }
@@ -171,7 +168,8 @@ class _ChatListContainerState extends State<ChatListContainer> {
                   CircleAvatar(
                     maxRadius: 30,
                     backgroundColor: Colors.grey,
-                    backgroundImage: NetworkImage(""),
+                    backgroundImage: NetworkImage(
+                        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fnk4zbMxj2CQ%2Fmaxresdefault.jpg&f=1&nofb=1"),
                   ),
                   Align(
                     alignment: Alignment.bottomRight,
@@ -179,13 +177,9 @@ class _ChatListContainerState extends State<ChatListContainer> {
                       height: 13,
                       width: 13,
                       decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: konlineDotColor,
-                        border: Border.all(
-                          color: kblackColor,
-                          width: 2
-                        )
-                      ),
+                          shape: BoxShape.circle,
+                          color: konlineDotColor,
+                          border: Border.all(color: kblackColor, width: 2)),
                     ),
                   )
                 ],

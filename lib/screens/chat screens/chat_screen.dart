@@ -16,6 +16,7 @@ import 'package:an_agile_squad/widgets/modal_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emoji_picker/emoji_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -130,15 +131,15 @@ class _ChatScreenState extends State<ChatScreen> {
             child: CircularProgressIndicator(),
           );
         }
-        //a callback which is called after a frame is rendered and it is called exactly once in its lifetime.But, if some changes are made to the UI, then the frame is rendered once again and the callback is called. This is used for automatically scrolling to the bottom of the chat screen on recieving a message,or while typing a message.
-        // SchedulerBinding.instance.addPostFrameCallback((_) {
-        //   _listScrollController.animateTo(
-        //     _listScrollController.position
-        //         .minScrollExtent, //minScrollExtent scrolls it to the bottom of the list
-        //     duration: Duration(milliseconds: 250),
-        //     curve: Curves.easeInOut,
-        //   );
-        // });
+        // a callback which is called after a frame is rendered and it is called exactly once in its lifetime.But, if some changes are made to the UI, then the frame is rendered once again and the callback is called. This is used for automatically scrolling to the bottom of the chat screen on recieving a message,or while typing a message.
+        SchedulerBinding.instance.addPostFrameCallback((_) {
+          _listScrollController.animateTo(
+            _listScrollController.position
+                .minScrollExtent, //minScrollExtent scrolls it to the bottom of the list
+            duration: Duration(milliseconds: 250),
+            curve: Curves.easeInOut,
+          );
+        });
 
         return ListView.builder(
           padding: EdgeInsets.all(10),

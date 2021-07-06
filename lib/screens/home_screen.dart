@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //SchedulerBinding is used because initState is called even before the first screen is drawn. Hence, no context is available at first, this throws an error. Adding a postFrmeCallback calls the below function after the home screen has been architected.
     SchedulerBinding.instance.addPostFrameCallback((_) {
       userProvider = Provider.of<UserProvider>(context, listen: false); //gets user details from db when home screen is loaded
-    userProvider.refreshUser();
+      userProvider.refreshUser();
     });
 
     pageController = PageController();

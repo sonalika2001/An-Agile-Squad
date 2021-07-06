@@ -19,11 +19,13 @@ class PickupLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
 
-    return (userProvider != null && userProvider.getUser != null) //refreshUser() is called in the home screen, hence getUser will return the correct values
+    return (userProvider != null &&
+            userProvider.getUser !=
+                null) //refreshUser() is called in the home screen, hence getUser will return the correct values
         ? StreamBuilder<DocumentSnapshot>(
             stream: callMethods.callStream(uid: userProvider.getUser.uid),
             builder: (context, snapshot) {
-              if (snapshot.hasData && snapshot.data.data != null) {
+              if (snapshot.hasData && snapshot.data.data() != null) {
                 Call call = Call.fromMap(snapshot.data.data());
 
                 if (!call.hasDialled) {
