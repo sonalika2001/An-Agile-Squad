@@ -3,7 +3,7 @@ import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/models/message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
+//contains chat methods
 class ChatMethods{
   
   static final FirebaseFirestore firestore = FirebaseFirestore.instance;

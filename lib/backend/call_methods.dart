@@ -2,6 +2,7 @@ import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/models/call.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+//contains call methods
 class CallMethods {
   final CollectionReference callCollection =
       FirebaseFirestore.instance.collection(kcallConnection);
