@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:an_agile_squad/enum/user_state.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Utils {
@@ -21,16 +22,32 @@ class Utils {
     return selectedImage;
   }
 
-  //compresses the image by decoding to bytes, changing dimensions and quality, encoding it back and returning the image with a file path containing a random filename for each image
-  // static Future<File> compressImage(File imageToCompress) async {
-  //   final tempDir = await getTemporaryDirectory();
-  //   final path = tempDir.path;
-  //   int rand = Random().nextInt(10000);
+//to interconvert user states 
+  static int stateToNum(UserState userState) {
+    switch (userState) {
+      case UserState.Offline:
+        return 0;
 
-  //   Im.Image image = Im.decodeImage(imageToCompress.readAsBytesSync());
-  //   Im.copyResize(image, width: 500, height: 500);
+      case UserState.Online:
+        return 1;
 
-  //   return new File('$path/img_$rand.jpg')
-  //     ..writeAsBytesSync(Im.encodeJpg(image, quality: 85));
-  // }
+      default:
+        return 2;
+    }
+  }
+
+  static UserState numToState(int number) {
+     switch (number) {
+      case 0:
+        return UserState.Offline;
+
+      case 1:
+        return UserState.Online;
+
+      default:
+        return UserState.Waiting;
+    }
+  }
+
+
 }
