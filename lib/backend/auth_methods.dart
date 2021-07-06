@@ -1,16 +1,16 @@
 import 'package:an_agile_squad/constants/strings.dart';
+import 'package:an_agile_squad/enum/user_state.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   GoogleSignIn _googleSignIn = GoogleSignIn();
   static final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  StorageReference _storageReference;
+
 
   Client client = Client();
   static final CollectionReference _userCollection =
@@ -29,6 +29,17 @@ class AuthMethods {
         await _userCollection.doc(currentUser.uid).get();
 
     return Client.fromMap(documentSnapshot.data());
+  }
+
+  Future<Client> getUserDetailsById(id) async {
+    try {
+      DocumentSnapshot documentSnapshot =
+          await _userCollection.doc(id).get();
+      return Client.fromMap(documentSnapshot.data());
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 
   Future<User> signIn() async {
@@ -96,4 +107,17 @@ class AuthMethods {
     }
     return userList;
   }
+
+//to change the user status
+   void setUserState(String userId, UserState userState) {
+    int stateNum = Utils.stateToNum(userState);
+
+    _userCollection.doc(userId).update({
+      "state": stateNum,
+    });
+  }
+
+//to fetch status in realtime
+  Stream<DocumentSnapshot> getUserStream(String uid) =>
+      _userCollection.doc(uid).snapshots();
 }
