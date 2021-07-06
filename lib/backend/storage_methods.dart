@@ -1,24 +1,20 @@
 import 'dart:io';
 
 import 'package:an_agile_squad/backend/chat_methods.dart';
-import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/provider/image_upload_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 
 //contains storage methods
 class StorageMethods {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  GoogleSignIn _googleSignIn = GoogleSignIn();
+
   static final FirebaseFirestore firestore = FirebaseFirestore.instance;
   StorageReference _storageReference;
 
   Client client = Client();
-  static final CollectionReference _userCollection =
-      firestore.collection(kusersCollection);
+ 
 
   Future<String> uploadImageToStorage(File imageFile) async {
     // mention try catch later on
