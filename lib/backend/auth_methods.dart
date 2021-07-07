@@ -87,12 +87,16 @@ class AuthMethods {
         .set(client.toMap(client));
   }
 
-  Future<void> signOut() async {
-    await _googleSignIn.disconnect();
-    await _googleSignIn.signOut();
-    return await _auth.signOut();
+ Future<bool> signOut() async {
+    try {
+      await _googleSignIn.signOut();
+      await _auth.signOut();
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
-
   //for search functionality
 //we pass user as argument so that we donot display the user's details when he/she searches for other users
   Future<List<Client>> fetchAllUsers(User currentUser) async {

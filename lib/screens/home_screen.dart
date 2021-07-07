@@ -3,6 +3,7 @@ import 'package:an_agile_squad/enum/user_state.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
 import 'package:an_agile_squad/screens/chat_list_screen.dart';
 import 'package:an_agile_squad/constants/constants.dart';
+import 'package:an_agile_squad/screens/log%20screen/log_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -27,10 +28,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     //SchedulerBinding is used because initState is called even before the first screen is drawn. Hence, no context is available at first, this throws an error. Adding a postFrmeCallback calls the below function after the home screen has been architected.
-    SchedulerBinding.instance.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) async{
       userProvider = Provider.of<UserProvider>(context,
           listen: false); //gets user details from db when home screen is loaded
-      userProvider.refreshUser();
+      await userProvider.refreshUser();
       //initialising the user state when app is opened
       authMethods.setUserState(userProvider.getUser.uid, UserState.Online);
     });
@@ -102,9 +103,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             Container(
               child: ChatListScreen(),
             ),
-            Center(
-              child: Text('Call Logs'),
-            ),
+            LogScreen(),
             Center(
               child: Text('Contact Screen'),
             )
