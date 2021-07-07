@@ -1,4 +1,5 @@
 import 'package:an_agile_squad/backend/local%20db/repository/log_repository.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/models/log.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
@@ -56,7 +57,11 @@ class _LogListContainerState extends State<LogListContainer> {
       future: LogRepository.getLogs(),
       builder: (BuildContext context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return Center(
+              child: CircularProgressIndicator(
+            backgroundColor: kdarkBlueColor,
+            valueColor: new AlwaysStoppedAnimation<Color>(klightBlueColor),
+          ));
         }
 
         if (snapshot.hasData) {

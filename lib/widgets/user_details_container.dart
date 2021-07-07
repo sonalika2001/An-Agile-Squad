@@ -47,7 +47,7 @@ class UserDetailsContainer extends StatelessWidget {
               onPressed: () => Navigator.maybePop(context),
             ),
             centerTitle: true,
-            title: ShimmeringLogo(),
+            title: AppLogo(),
             actions: <Widget>[
               FlatButton(
                 onPressed: () => signOut(),

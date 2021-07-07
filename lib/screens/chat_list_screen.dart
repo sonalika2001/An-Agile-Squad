@@ -77,11 +77,13 @@ class ChatListContainer extends StatelessWidget {
                     Contact contact = Contact.fromMap(docList[index].data());
                     return ContactView(contact);
                   },
-                  
                 );
             }
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                backgroundColor: kdarkBlueColor,
+                valueColor: new AlwaysStoppedAnimation<Color>(klightBlueColor),
+              ),
             );
           }),
     );

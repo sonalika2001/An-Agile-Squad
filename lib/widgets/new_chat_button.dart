@@ -9,12 +9,17 @@ class NewChatButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           gradient: kfabGradient, borderRadius: BorderRadius.circular(50)),
-      child: Icon(
-        Icons.edit,
+      child: IconButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/search_screen');
+        },
+        icon: Icon(
+          Icons.edit,
+        ),
         color: Colors.white,
-        size: 25,
+        iconSize: 30,
       ),
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(10),
     );
   }
 }

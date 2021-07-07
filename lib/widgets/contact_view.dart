@@ -1,5 +1,6 @@
 import 'package:an_agile_squad/backend/auth_methods.dart';
 import 'package:an_agile_squad/backend/chat_methods.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/models/contact.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
@@ -30,7 +31,10 @@ class ContactView extends StatelessWidget {
           );
         }
         return Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(
+            backgroundColor: kdarkBlueColor,
+            valueColor: new AlwaysStoppedAnimation<Color>(klightBlueColor),
+          ),
         );
       },
     );
@@ -82,7 +86,6 @@ class ViewLayout extends StatelessWidget {
           ],
         ),
       ),
-      
     );
   }
 }

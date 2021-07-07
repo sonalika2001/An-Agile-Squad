@@ -89,7 +89,9 @@ class _ChatScreenState extends State<ChatScreen> {
               ? Container(
                   alignment: Alignment.centerRight,
                   margin: EdgeInsets.only(right: 15),
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    backgroundColor: kblueColor,
+                  ),
                 )
               : Container(),
           chatControls(),
@@ -131,7 +133,10 @@ class _ChatScreenState extends State<ChatScreen> {
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.data == null) {
           return Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              backgroundColor: kdarkBlueColor,
+              valueColor: new AlwaysStoppedAnimation<Color>(klightBlueColor),
+            ),
           );
         }
         // a callback which is called after a frame is rendered and it is called exactly once in its lifetime.But, if some changes are made to the UI, then the frame is rendered once again and the callback is called. This is used for automatically scrolling to the bottom of the chat screen on recieving a message,or while typing a message.
@@ -404,11 +409,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   pickImage(ImageSource source) async {
     File selectedImage = await Utils.pickImage(source);
-    storageMethods.uploadImage(
-        selectedImage,
-       widget.receiver.uid,
-       _currentUserID,
-      _imageUploadProvider);
+
+    storageMethods.uploadImage(selectedImage, widget.receiver.uid,
+        _currentUserID, _imageUploadProvider);
   }
 
   sendMessage() {

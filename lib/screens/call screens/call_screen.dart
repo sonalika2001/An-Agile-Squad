@@ -53,8 +53,8 @@ class _CallScreenState extends State<CallScreen> {
     await AgoraRtcEngine.enableWebSdkInteroperability(true);
     await AgoraRtcEngine.setParameters(
         '''{\"che.video.lowBitRateStreamParameter\":{\"width\":320,\"height\":180,\"frameRate\":15,\"bitRate\":140}}''');
-    await AgoraRtcEngine.joinChannel(null, widget.call.channelId, null, 0); //responsible for making both caller and receiver join the channel
-    
+    await AgoraRtcEngine.joinChannel(null, widget.call.channelId, null,
+        0); //responsible for making both caller and receiver join the channel
   }
 
   addPostFrameCallback() {
@@ -161,7 +161,7 @@ class _CallScreenState extends State<CallScreen> {
     };
 
     AgoraRtcEngine.onUserOffline = (int uid, int reason) {
-      // if call was picked
+      callMethods.endCall(call: widget.call);
 
       setState(() {
         final info = 'userOffline: $uid';
@@ -246,9 +246,6 @@ class _CallScreenState extends State<CallScreen> {
     return Container();
   }
 
-  
-  
-
   void _onToggleMute() {
     setState(() {
       muted = !muted;
@@ -281,9 +278,9 @@ class _CallScreenState extends State<CallScreen> {
             padding: const EdgeInsets.all(12.0),
           ),
           RawMaterialButton(
-            onPressed: () async {
-                    await callMethods.endCall(call: widget.call);
-                  },
+            onPressed: () => callMethods.endCall(
+              call: widget.call,
+            ),
             child: Icon(
               Icons.call_end,
               color: Colors.white,

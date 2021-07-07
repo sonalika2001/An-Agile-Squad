@@ -1,4 +1,5 @@
 import 'package:an_agile_squad/backend/call_methods.dart';
+import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/models/call.dart';
 import 'package:an_agile_squad/screens/call%20screens/pickup%20screens/pickup_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -37,7 +38,10 @@ class PickupLayout extends StatelessWidget {
           )
         : Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                backgroundColor: kdarkBlueColor,
+                valueColor: new AlwaysStoppedAnimation<Color>(klightBlueColor),
+              ),
             ),
           );
   }

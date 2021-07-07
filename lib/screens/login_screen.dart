@@ -14,25 +14,57 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isLoginPressed = false;
-   AuthMethods authMethods = AuthMethods();
+  AuthMethods authMethods = AuthMethods();
   StorageMethods storageMethods = StorageMethods();
   ChatMethods chatMethods = ChatMethods();
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kblackColor,
-      body: Stack(
+      body: Column(
         children: [
-          Center(
-            child: loginButton(),
+          Padding(
+            padding:
+                EdgeInsets.only(top: 0.15 * MediaQuery.of(context).size.height),
+            child: Text(
+              "An Agile Squad",
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.w600,
+                color: klightBlueColor,
+                fontFamily: 'Exo 2',
+              ),
+            ),
           ),
-          isLoginPressed
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Container()
+          Padding(
+            padding: EdgeInsets.only(
+                bottom: 0,
+                top: 0 * MediaQuery.of(context).size.height,
+                left: 5,
+                right: 5),
+            child: Image(
+              image: AssetImage("assets/logo.png"),
+              height: 0.4 * MediaQuery.of(context).size.height,
+              width: 0.9 * MediaQuery.of(context).size.width,
+            ),
+          ),
+          Stack(
+            children: [
+              Center(
+                child: loginButton(),
+              ),
+              isLoginPressed
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        backgroundColor: kdarkBlueColor,
+                        valueColor:
+                            new AlwaysStoppedAnimation<Color>(klightBlueColor),
+                      ),
+                    )
+                  : Container()
+            ],
+          ),
         ],
       ),
     );
@@ -47,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Text(
           "LOGIN",
           style: TextStyle(
-              fontSize: 35, fontWeight: FontWeight.w900, letterSpacing: 1.2),
+              fontSize: 35, fontWeight: FontWeight.w800, letterSpacing: 1.2),
         ),
         onPressed: () => executeLogin(),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -56,7 +88,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void executeLogin() {
-
     setState(() {
       isLoginPressed = true;
     });
@@ -71,11 +102,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void authenticateUser(User user) {
     authMethods.authenticateUser(user).then((isNewUser) {
-
       setState(() {
         isLoginPressed = false;
       });
-      
+
       if (isNewUser) {
         authMethods.addDataToDb(user).then((value) {
           Navigator.pushReplacement(context, MaterialPageRoute(
