@@ -1,6 +1,4 @@
-import 'package:an_agile_squad/backend/local%20db/repository/log_repository.dart';
 import 'package:an_agile_squad/constants/constants.dart';
-import 'package:an_agile_squad/models/log.dart';
 import 'package:an_agile_squad/screens/call%20screens/pickup%20screens/pickup_layout.dart';
 import 'package:an_agile_squad/widgets/floating_column.dart';
 import 'package:an_agile_squad/widgets/log_list_container.dart';

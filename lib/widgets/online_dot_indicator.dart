@@ -23,12 +23,13 @@ class OnlineDotIndicator extends StatelessWidget {
         case UserState.Online:
           return Colors.green;
         default:
-          return Colors.orange; //this is displayed when the user state is null as well as when the user is idle
+          return Colors
+              .orange; //this is displayed when the user state is null as well as when the user is idle
       }
     }
 
     return Align(
-      alignment: Alignment.topRight,
+      alignment: Alignment.bottomRight,
       child: StreamBuilder<DocumentSnapshot>(
         stream: _authMethods.getUserStream(
           uid,
@@ -41,8 +42,8 @@ class OnlineDotIndicator extends StatelessWidget {
           }
 
           return Container(
-            height: 10,
-            width: 10,
+            height: 11,
+            width: 11,
             margin: EdgeInsets.only(right: 5, top: 5),
             decoration: BoxDecoration(
               shape: BoxShape.circle,

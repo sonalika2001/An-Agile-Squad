@@ -29,16 +29,16 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     //SchedulerBinding is used because initState is called even before the first screen is drawn. Hence, no context is available at first, this throws an error. Adding a postFrmeCallback calls the below function after the home screen has been architected.
-    SchedulerBinding.instance.addPostFrameCallback((_) async{
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       userProvider = Provider.of<UserProvider>(context,
           listen: false); //gets user details from db when home screen is loaded
       await userProvider.refreshUser();
       //initialising the user state when app is opened
       authMethods.setUserState(userProvider.getUser.uid, UserState.Online);
 
-       LogRepository.init(
+      LogRepository.init(
         true,
-       userProvider.getUser.uid,
+        userProvider.getUser.uid,
       );
     });
 
@@ -75,7 +75,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             ? authMethods.setUserState(currentUserId, UserState.Offline)
             : print("inactive state");
         break;
-      case AppLifecycleState.paused: //if the user is not interacting with the app even though it is open
+      case AppLifecycleState
+          .paused: //if the user is not interacting with the app even though it is open
         currentUserId != null
             ? authMethods.setUserState(currentUserId, UserState.Waiting)
             : print("paused state");
@@ -110,9 +111,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               child: ChatListScreen(),
             ),
             LogScreen(),
-            Center(
-              child: Text('Contact Screen'),
-            )
           ],
           controller: pageController,
           onPageChanged: onPageChanged,
@@ -149,19 +147,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                     ),
                   ),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.contact_phone,
-                    color: (_page == 2) ? klightBlueColor : kgreyColor,
-                  ),
-                  title: Text(
-                    'Contact',
-                    style: TextStyle(
-                      fontSize: _labelFontSize,
-                      color: (_page == 2) ? klightBlueColor : kgreyColor,
-                    ),
-                  ),
-                ),
+                
               ],
               onTap: navigationTapped,
               currentIndex: _page,

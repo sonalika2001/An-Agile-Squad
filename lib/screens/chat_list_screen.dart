@@ -4,7 +4,6 @@ import 'package:an_agile_squad/backend/storage_methods.dart';
 import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/models/contact.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
-import 'package:an_agile_squad/widgets/app_bar.dart';
 import 'package:an_agile_squad/widgets/contact_view.dart';
 import 'package:an_agile_squad/widgets/logs_app_bar.dart';
 import 'package:an_agile_squad/widgets/new_chat_button.dart';

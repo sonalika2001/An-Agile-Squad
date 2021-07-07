@@ -105,7 +105,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                     CallScreen(call: widget.call),
                               ),
                             )
-                          : {};
+                          : Container();
                     }
                 ),
               ],
