@@ -1,4 +1,5 @@
 import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/backend/local%20db/repository/log_repository.dart';
 import 'package:an_agile_squad/enum/user_state.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
 import 'package:an_agile_squad/screens/chat_list_screen.dart';
@@ -34,6 +35,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       await userProvider.refreshUser();
       //initialising the user state when app is opened
       authMethods.setUserState(userProvider.getUser.uid, UserState.Online);
+
+       LogRepository.init(
+        true,
+       userProvider.getUser.uid,
+      );
     });
 
     WidgetsBinding.instance.addObserver(this); //adding an observer

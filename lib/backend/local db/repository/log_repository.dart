@@ -7,8 +7,9 @@ class LogRepository {
   static var dbObject;
   static bool isHive;
 
-  static init(bool isHive) {
+  static init(bool isHive, String dbName) {
     dbObject = isHive ? HiveMethods() : SqliteMethods();
+    dbObject.openDb(dbName);
     dbObject.init();
   }
 

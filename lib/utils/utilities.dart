@@ -48,13 +48,12 @@ class Utils {
       default:
         return UserState.Waiting;
     }
+  }
 
-    String formatDateString(String dateString) {
+   static String formatDateString(String dateString) {
     DateTime dateTime = DateTime.parse(dateString);
     var formatter = DateFormat('dd/MM/yy');
     return formatter.format(dateTime);
   }
   }
 
-
-}

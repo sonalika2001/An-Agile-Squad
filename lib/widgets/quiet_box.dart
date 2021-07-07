@@ -2,7 +2,17 @@ import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
-class QuietBox extends StatelessWidget {
+class QuietBox extends StatefulWidget {
+
+  final String heading;
+  final String subheading;
+
+  QuietBox(this.heading,this.subheading);
+  @override
+  _QuietBoxState createState() => _QuietBoxState();
+}
+
+class _QuietBoxState extends State<QuietBox> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -16,7 +26,7 @@ class QuietBox extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                "This is where all your chats are listed.",
+                widget.heading,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -25,7 +35,7 @@ class QuietBox extends StatelessWidget {
               ),
               SizedBox(height: 25),
               Text(
-                "Search for your friends and family to start video calling or chatting with them!",
+                widget.subheading,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   letterSpacing: 1.2,

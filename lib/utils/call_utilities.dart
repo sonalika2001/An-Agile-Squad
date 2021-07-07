@@ -1,8 +1,11 @@
 import 'dart:math';
 
 import 'package:an_agile_squad/backend/call_methods.dart';
+import 'package:an_agile_squad/backend/local%20db/repository/log_repository.dart';
+import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/models/call.dart';
 import 'package:an_agile_squad/models/client.dart';
+import 'package:an_agile_squad/models/log.dart';
 import 'package:an_agile_squad/screens/call%20screens/call_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,11 +24,22 @@ class CallUtils {
       channelId: Random().nextInt(1000).toString(), //random number b/w 0-1000
     );
 
+    Log log = Log(
+      callerName: from.name,
+      callerPic: from.profilePhoto,
+      callStatus: kCallStatusDialled,
+      receiverName: to.name,
+      receiverPic: to.profilePhoto,
+      timestamp: DateTime.now().toString(),
+    );
+
     bool callMade = await callMethods.makeCall(call: call);
 
     call.hasDialled = true; //helps the call screen differentiate between the caller and receiver
 
     if (callMade) {
+       // enter log
+      LogRepository.addLogs(log);
       Navigator.push(
           context,
           MaterialPageRoute(
