@@ -10,9 +10,9 @@ const Color klightBlueColor = Color(0xff7B83EB);
 const Color kseparatorColor = Color(0xff272c35);
 const Color kdarkBlueColor = Color(0xff464EB8);
 const Color kgradientColorStart = Color(0xff7B83EB);
-const Color kgradientColorEnd = Color(0xff464EB8);
+const Color kgradientColorEnd = Color(0xff505AC9);
 
-const Color ksenderColor = Color(0xff464EB8);
+const Color ksenderColor = Color(0xff505AC9);
 const Color kreceiverColor = Color(0xff1e2225);
 
 Gradient kfabGradient = LinearGradient(
