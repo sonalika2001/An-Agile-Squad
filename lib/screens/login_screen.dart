@@ -1,6 +1,6 @@
-import 'package:an_agile_squad/backend/auth_methods.dart';
-import 'package:an_agile_squad/backend/chat_methods.dart';
-import 'package:an_agile_squad/backend/storage_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/auth_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/chat_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/storage_methods.dart';
 import 'package:an_agile_squad/screens/home_screen.dart';
 import 'package:an_agile_squad/constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';

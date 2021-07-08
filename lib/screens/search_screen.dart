@@ -1,9 +1,9 @@
-import 'package:an_agile_squad/backend/auth_methods.dart';
-import 'package:an_agile_squad/backend/chat_methods.dart';
-import 'package:an_agile_squad/backend/storage_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/auth_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/chat_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/storage_methods.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/constants/constants.dart';
-import 'package:an_agile_squad/widgets/custom_tile.dart';
+import 'package:an_agile_squad/widgets/chat%20widgets/custom_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';

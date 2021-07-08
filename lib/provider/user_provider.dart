@@ -1,4 +1,4 @@
-import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/auth_methods.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:flutter/material.dart';
 

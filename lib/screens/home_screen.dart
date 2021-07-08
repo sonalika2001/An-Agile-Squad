@@ -1,4 +1,4 @@
-import 'package:an_agile_squad/backend/auth_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/auth_methods.dart';
 import 'package:an_agile_squad/backend/local%20db/repository/log_repository.dart';
 import 'package:an_agile_squad/enum/user_state.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';

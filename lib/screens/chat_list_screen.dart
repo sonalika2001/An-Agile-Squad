@@ -1,14 +1,14 @@
-import 'package:an_agile_squad/backend/auth_methods.dart';
-import 'package:an_agile_squad/backend/chat_methods.dart';
-import 'package:an_agile_squad/backend/storage_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/auth_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/chat_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/storage_methods.dart';
 import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/models/contact.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
-import 'package:an_agile_squad/widgets/contact_view.dart';
-import 'package:an_agile_squad/widgets/logs_app_bar.dart';
-import 'package:an_agile_squad/widgets/new_chat_button.dart';
-import 'package:an_agile_squad/widgets/quiet_box.dart';
-import 'package:an_agile_squad/widgets/user_circle.dart';
+import 'package:an_agile_squad/widgets/user%20widgets/contact_view.dart';
+import 'package:an_agile_squad/widgets/app%20bars/logs_app_bar.dart';
+import 'package:an_agile_squad/widgets/chat%20widgets/new_chat_button.dart';
+import 'package:an_agile_squad/widgets/info%20providers/quiet_box.dart';
+import 'package:an_agile_squad/widgets/user%20widgets/user_circle.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,13 +33,6 @@ class ChatListScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/search_screen');
             },
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.more_vert,
-              color: Colors.white,
-            ),
-            onPressed: () {},
           ),
         ],
       ),

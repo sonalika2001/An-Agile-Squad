@@ -1,8 +1,8 @@
 import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/screens/call%20screens/pickup%20screens/pickup_layout.dart';
-import 'package:an_agile_squad/widgets/floating_column.dart';
-import 'package:an_agile_squad/widgets/log_list_container.dart';
-import 'package:an_agile_squad/widgets/logs_app_bar.dart';
+import 'package:an_agile_squad/widgets/log%20widgets/floating_column.dart';
+import 'package:an_agile_squad/widgets/log%20widgets/log_list_container.dart';
+import 'package:an_agile_squad/widgets/app%20bars/logs_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class LogScreen extends StatelessWidget {

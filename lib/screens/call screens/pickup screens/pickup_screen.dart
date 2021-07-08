@@ -1,13 +1,13 @@
 
 
-import 'package:an_agile_squad/backend/call_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/call_methods.dart';
 import 'package:an_agile_squad/backend/local%20db/repository/log_repository.dart';
 import 'package:an_agile_squad/constants/strings.dart';
 import 'package:an_agile_squad/models/call.dart';
 import 'package:an_agile_squad/models/log.dart';
 import 'package:an_agile_squad/screens/call%20screens/call_screen.dart';
 import 'package:an_agile_squad/utils/permissions.dart';
-import 'package:an_agile_squad/widgets/cached_image.dart';
+import 'package:an_agile_squad/widgets/chat%20widgets/cached_image.dart';
 import 'package:flutter/material.dart';
 
 class PickupScreen extends StatefulWidget {
