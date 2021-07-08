@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:an_agile_squad/backend/chat_methods.dart';
+import 'package:an_agile_squad/backend/firebase%20methods/chat_methods.dart';
 import 'package:an_agile_squad/models/client.dart';
 import 'package:an_agile_squad/provider/image_upload_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
