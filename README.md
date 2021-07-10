@@ -35,46 +35,32 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
 
 <ol>
   <h3><li> Video-Calling </h3>
-  <ul>
-  <li>Function</li>
-  <li>Optimisations</li>
-  </ul></li>
+  The video calling feature can be accessed from the videocam icon inside the chat screen. This functionality allows <b>a minimum of 2</b> and <b>a maximum of 5 users</b> to be present in the same call at a time. <a href="https://www.agora.io/en/">Agora</a> provides the <b>Agora RTC (Real-time Communication) SDK/Engine</b> for enabling real-time audio and video communications. The video channel is initialised and rendered in a split screen view depending on the number of participants with the help of Agora Event Handlers and helper functions. The users can also <b>mute and unmute</b> themselves and <b>switch b/w their front and back cameras</b>.<br><br>
+  <b>Optimisations:</b> A <b>pickup screen</b> containing the <b>user's profile picture, pick call and end call buttons</b> has been wrapped over the home screen and is triggered on the receiver's screen as soon as a video call is initiated by the caller.<br>
+  
+  Click <a href="https://github.com/sonalika2001/An-Agile-Squad/tree/Video-Call" >here</a> to view the video-calling feature branch.
+  
+  
+  <b>Important Note:</b><i> The temporary token provided by Agora is a must for the functionalities to work properly. These expire every 24 hours and will hence be the only thing being updated alongside the newly generated apks after the submission deadline.</i>
+ </li>
   
   <h3><li> Chat </h3>
-  <ul>
-  <li>Function</li>
-  <li>Optimisations</li>
-  </ul></li>
+  </li>
   
   <h3><li> Call Logs </h3>
-  <ul>
-  <li>Function</li>
-  <li>Optimisations</li>
-  </ul></li>
+  </li>
   
   <h3><li>Search </h3>
-  <ul>
-  <li>Function</li>
-  <li>Optimisations</li>
-  </ul></li>
+  </li>
   
   <h3><li> Authentication </h3>
-  <ul>
-  <li>Function</li>
-  <li>Optimisations</li>
-  </ul></li>
+ </li>
   
   <h3><li> Online Presence Indicator </h3>
-  <ul>
-  <li>Function</li>
-  <li>Optimisations</li>
-  </ul></li>
+  </li>
   
   <h3><li> User Interface </h3>
-  <ul>
-  <li>Function</li>
-  <li>Optimisations</li>
-  </ul></li>
+  </li>
   
   
   </ol>
