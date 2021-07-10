@@ -7,7 +7,9 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
 ## Download and Usage
 
 <ul>  
-  <li>The apks for various architectures can be accessed [here](https://sonalika2001.github.io/An-Agile-Squad-Website/). </li> 
+  <li>The apks for various architectures can be accessed <a class=download_link
+               href="https://sonalika2001.github.io/An-Agile-Squad-Website/"
+               download>here.</a> </li> 
   <li>The minimum Android API level required to run the app is <b>16</b>.</li>
   <li>The minimum iOS version required to run the app is <b>8.0</b></li>
   <li>Device permissions are required to run the app on both Android and iOS.</li>
