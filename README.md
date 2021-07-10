@@ -7,7 +7,7 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
 ## Download and Usage
 
 <ul>  
-  <li>The apks for various architectures can be accessed [here]().</li>
+  <li>The apks for various architectures can be accessed [here](https://sonalika2001.github.io/An-Agile-Squad-Website/). </li> 
   <li>The minimum Android API level required to run the app is <b>16</b>.</li>
   <li>The minimum iOS version required to run the app is <b>8.0</b></li>
   <li>Device permissions are required to run the app on both Android and iOS.</li>
@@ -81,7 +81,7 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
 The [master](https://github.com/sonalika2001/An-Agile-Squad/tree/master) branch contains the complete implementations. The rest are feature branches and can be viewed [here](https://github.com/sonalika2001/An-Agile-Squad/branches/active).
     
 ## Installation & Requirements
-In order to clone this repository and run it on your device, the above mentioned versions of Flutter and Dart must be downloaded. For further installation instructions, refer the [Flutter installation guide](https://flutter.dev/docs/get-started/install)
+In order to clone this repository and run it on your device, the above mentioned versions of Flutter and Dart must be downloaded. For further installation instructions, refer the [Flutter installation guide](https://flutter.dev/docs/get-started/install).
 
 ## High Level Folder Structure
 
