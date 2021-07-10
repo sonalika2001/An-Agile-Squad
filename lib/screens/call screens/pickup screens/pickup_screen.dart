@@ -1,5 +1,5 @@
 
-
+import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:an_agile_squad/backend/firebase%20methods/call_methods.dart';
 import 'package:an_agile_squad/backend/local%20db/repository/log_repository.dart';
 import 'package:an_agile_squad/constants/strings.dart';
@@ -26,7 +26,7 @@ class _PickupScreenState extends State<PickupScreen> {
   bool isCallMissed = true;
 
 //carries out initialisation and insertion of logs in the database
-   addToLocalStorage({@required String callStatus}) {
+  addToLocalStorage({@required String callStatus}) {
     Log log = Log(
       callerName: widget.call.callerName,
       callerPic: widget.call.callerPic,
@@ -39,14 +39,15 @@ class _PickupScreenState extends State<PickupScreen> {
     LogRepository.addLogs(log);
   }
 
-   @override
+  @override
   void dispose() {
     if (isCallMissed) {
-      addToLocalStorage(callStatus: kCallStatusMissed); //the pickup screen is disposed when the call is cut directly
+      addToLocalStorage(
+          callStatus:
+              kCallStatusMissed); //the pickup screen is disposed when the call is cut directly
     }
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -85,29 +86,31 @@ class _PickupScreenState extends State<PickupScreen> {
                   icon: Icon(Icons.call_end),
                   color: Colors.redAccent,
                   onPressed: () async {
-                     isCallMissed = false;
+                    isCallMissed = false;
                     addToLocalStorage(callStatus: kCallStatusReceived);
                     await callMethods.endCall(call: widget.call);
                   },
                 ),
                 SizedBox(width: 25),
                 IconButton(
-                  icon: Icon(Icons.call),
-                  color: Colors.green,
-                  onPressed: () async {
+                    icon: Icon(Icons.call),
+                    color: Colors.green,
+                    onPressed: () async {
                       isCallMissed = false;
                       addToLocalStorage(callStatus: kCallStatusReceived);
                       await Permissions.cameraAndMicrophonePermissionsGranted()
                           ? Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    CallScreen(call: widget.call),
+                                builder: (context) => CallScreen(
+                                  call: widget.call,
+                                  channelName: 'agileSquad',
+                                  role: ClientRole.Broadcaster,
+                                ),
                               ),
                             )
                           : Container();
-                    }
-                ),
+                    }),
               ],
             ),
           ],

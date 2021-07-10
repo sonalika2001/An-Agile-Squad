@@ -1,2 +1,3 @@
 
-const String appID = '3968add274604121ae4b2afb487ab419';
+const String APP_ID = '3968add274604121ae4b2afb487ab419';
+const String Token = '0063968add274604121ae4b2afb487ab419IADQ4VQTF63ywXRDU1NuHd5dbRU4+popRvjjHrdRztRjHEPPFfYAAAAAEAABWx8+16/qYAEAAQDWr+pg';

@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:an_agile_squad/backend/firebase%20methods/call_methods.dart';
 import 'package:an_agile_squad/backend/local%20db/repository/log_repository.dart';
 import 'package:an_agile_squad/constants/strings.dart';
@@ -35,15 +35,20 @@ class CallUtils {
 
     bool callMade = await callMethods.makeCall(call: call);
 
-    call.hasDialled = true; //helps the call screen differentiate between the caller and receiver
+    call.hasDialled =
+        true; //helps the call screen differentiate between the caller and receiver
 
     if (callMade) {
-       // enter log
+      // enter log
       LogRepository.addLogs(log);
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CallScreen(call: call),
+            builder: (context) => CallScreen(
+              call: call,
+              channelName: 'agileSquad',
+              role: ClientRole.Broadcaster,
+            ),
           ));
     }
   }
