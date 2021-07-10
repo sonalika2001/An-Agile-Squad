@@ -20,7 +20,7 @@ class UserDetailsContainer extends StatelessWidget {
       if (isLoggedOut) {
         // set userState to offline as the user logs out
         authMethods.setUserState(
-           userProvider.getUser.uid,
+          userProvider.getUser.uid,
           UserState.Offline,
         );
 
@@ -51,8 +51,8 @@ class UserDetailsContainer extends StatelessWidget {
               FlatButton(
                 onPressed: () => signOut(),
                 child: Text(
-                  "Sign Out",
-                  style: TextStyle(color: Colors.white, fontSize: 12),
+                  "Log Out",
+                  style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               )
             ],
@@ -63,4 +63,3 @@ class UserDetailsContainer extends StatelessWidget {
     );
   }
 }
-

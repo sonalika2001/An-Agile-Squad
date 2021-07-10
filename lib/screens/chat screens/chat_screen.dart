@@ -14,6 +14,7 @@ import 'package:an_agile_squad/utils/utilities.dart';
 import 'package:an_agile_squad/widgets/app%20bars/app_bar.dart';
 import 'package:an_agile_squad/widgets/chat%20widgets/cached_image.dart';
 import 'package:an_agile_squad/widgets/chat%20widgets/modal_tile.dart';
+import 'package:an_agile_squad/widgets/info%20providers/coming_soon.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emoji_picker/emoji_picker.dart';
 import 'package:flutter/material.dart';
@@ -289,25 +290,65 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                       ),
                       ModalTile(
-                          title: "File",
-                          subtitle: "Share files",
-                          icon: Icons.tab),
+                        title: "File",
+                        subtitle: "Share files",
+                        icon: Icons.tab,
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: kblackColor,
+                            builder: (context) => ComingSoon(),
+                          );
+                        },
+                      ),
                       ModalTile(
-                          title: "Contact",
-                          subtitle: "Share contacts",
-                          icon: Icons.contacts),
+                        title: "Contact",
+                        subtitle: "Share contacts",
+                        icon: Icons.contacts,
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: kblackColor,
+                            builder: (context) => ComingSoon(),
+                          );
+                        },
+                      ),
                       ModalTile(
-                          title: "Location",
-                          subtitle: "Share a location",
-                          icon: Icons.add_location),
+                        title: "Location",
+                        subtitle: "Share a location",
+                        icon: Icons.add_location,
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: kblackColor,
+                            builder: (context) => ComingSoon(),
+                          );
+                        },
+                      ),
                       ModalTile(
-                          title: "Schedule Call",
-                          subtitle: "Arrange a skype call and get reminders",
-                          icon: Icons.schedule),
+                        title: "Schedule Call",
+                        subtitle: "Arrange a skype call and get reminders",
+                        icon: Icons.schedule,
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: kblackColor,
+                            builder: (context) => ComingSoon(),
+                          );
+                        },
+                      ),
                       ModalTile(
-                          title: "Create Poll",
-                          subtitle: "Share polls",
-                          icon: Icons.poll)
+                        title: "Create Poll",
+                        subtitle: "Share polls",
+                        icon: Icons.poll,
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: kblackColor,
+                            builder: (context) => ComingSoon(),
+                          );
+                        },
+                      )
                     ],
                   ),
                 ),
@@ -379,7 +420,18 @@ class _ChatScreenState extends State<ChatScreen> {
               ? Container()
               : Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Icon(Icons.record_voice_over),
+                  child: GestureDetector(
+                    child: Icon(
+                      Icons.record_voice_over,
+                    ),
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: kblackColor,
+                        builder: (context) => ComingSoon(),
+                      );
+                    },
+                  ),
                 ),
           isWriting
               ? Container()
@@ -449,7 +501,7 @@ class _ChatScreenState extends State<ChatScreen> {
       actions: <Widget>[
         IconButton(
           icon: Icon(
-            Icons.video_call,
+            Icons.videocam,
           ),
           onPressed: () async =>
               await Permissions.cameraAndMicrophonePermissionsGranted()
@@ -464,7 +516,13 @@ class _ChatScreenState extends State<ChatScreen> {
           icon: Icon(
             Icons.phone,
           ),
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              backgroundColor: kblackColor,
+              builder: (context) => ComingSoon(),
+            );
+          },
         )
       ],
     );

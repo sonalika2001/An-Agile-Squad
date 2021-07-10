@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="an_agile_squad"
+        android:label="An Agile Squad"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
         <activity

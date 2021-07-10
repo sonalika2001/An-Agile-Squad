@@ -2,18 +2,17 @@ import 'package:an_agile_squad/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 //this is a custom App Bar designed to look similar to microsoft apps like teams, skype etc.
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
-
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
   final List<Widget> actions;
   final Widget leading;
   final bool centerTitle;
 
-   const CustomAppBar({
+  const CustomAppBar({
     Key key,
     @required this.title,
     @required this.actions,
-    @required this.leading, 
+    @required this.leading,
     @required this.centerTitle,
   }) : super(key: key);
 
@@ -42,6 +41,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
     );
   }
 
-  final Size preferredSize = const Size.fromHeight(kToolbarHeight+10);
+  final Size preferredSize = const Size.fromHeight(kToolbarHeight + 9);
 }
-  

@@ -124,13 +124,13 @@ class _LogListContainerState extends State<LogListContainer> {
           }
           return QuietBox(
             "This is where all your call logs are listed",
-            "Calling people all over the world with just one click",
+            "Calling people all over the world with just one click!",
           );
         }
 
         return QuietBox(
           "This is where all your call logs are listed",
-          "Calling people all over the world with just one click",
+          "Calling people all over the world with just one click!",
         );
       },
     );
