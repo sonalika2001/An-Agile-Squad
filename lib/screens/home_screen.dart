@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                     color: (_page == 1) ? klightBlueColor : kgreyColor,
                   ),
                   title: Text(
-                    'Call Log',
+                    'Call Logs',
                     style: TextStyle(
                       fontSize: _labelFontSize,
                       color: (_page == 1) ? klightBlueColor : kgreyColor,
