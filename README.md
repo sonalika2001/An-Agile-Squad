@@ -118,7 +118,16 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
   </ol>
   
 ## Repository Structure
-The [master](https://github.com/sonalika2001/An-Agile-Squad/tree/master) branch contains the complete implementations. The rest are feature branches and can be viewed [here](https://github.com/sonalika2001/An-Agile-Squad/branches/active).
+<ul>
+  <li>The <a href="https://github.com/sonalika2001/An-Agile-Squad/tree/master">master</a> branch contains the complete implementations. The rest are feature branches and can be viewed <a href="https://github.com/sonalika2001/An-Agile-Squad/branches/active">here</a>.</li>
+  <li> The <b> android and iOS</b> folders contain the complete android and iOS projects respectively with their compiled codes.</li>
+  <li> The <b> lib </b> fodler contains 99% of the code written by the developer which consists of dart files.</li>
+  <li> The <b> assets and fonts </b> folders contain the images and fonts used in the app respectively.</li>
+  <li> The <b> test</b> folder allows the developer to write automated tests, i.e. it contains code to run the app and test for various parameters.</li>
+  <li> Flutter saves internal data and dependencies in the <b> .metadata</b> file.</li>
+  <li> The <b> pubspec.yaml</b> file helps configure dependencies and 3rd party packages. The <b> pubspec.lock</b> file is generated based on pubspec.yaml and it holds certain extra information which can be specific to the developer's environment.</li>
+  <li> The <b> build </b> folder(hidden, hence not pushed to repository) holds the output of the flutter application, such as the various APKs generated. It is handled by the Flutter SDK </li>
+  </ul>
     
 ## Installation & Requirements
 In order to clone this repository and run it on your device, the above mentioned versions of Flutter and Dart must be downloaded. For further installation instructions, refer the [Flutter installation guide](https://flutter.dev/docs/get-started/install).
