@@ -124,6 +124,8 @@ The [master](https://github.com/sonalika2001/An-Agile-Squad/tree/master) branch 
 In order to clone this repository and run it on your device, the above mentioned versions of Flutter and Dart must be downloaded. For further installation instructions, refer the [Flutter installation guide](https://flutter.dev/docs/get-started/install).
 
 ## High Level Folder Structure
+This is the structure specific to the <b> lib </b> folder, since this is where all the code is written. The other folders are non-modifiable. 
+
 
 ## Low Level Folder/File Structure
 
