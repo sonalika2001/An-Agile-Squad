@@ -125,14 +125,15 @@ In order to clone this repository and run it on your device, the above mentioned
 
 ## High Level Folder Structure
 This is the structure specific to the <b> lib </b> folder, since this is where all the code is written. The other folders are non-modifiable.<br>
-<i>The folders are denoted by rounded rectangles and follow color scheme according to level of nesting.<br></i>
+<i>The folders are denoted by rounded rectangles and follow color scheme according to level of nesting.</i><br>
 <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/High%20Level%20Structure.png" alt="high level folder structure" >
 
 
 ## Low Level Folder/File Structure
 This is the structure specific to the <b> lib </b> folder, since this is where all the code is written. The other folders are non-modifiable.<br>
-<i>The folders are denoted by rounded rectangles, files are denoted by rectangles and they follow color scheme according to their level of nesting(for folders) and type of document(files).<br></i>
-<img src="
+<i>The folders are denoted by rounded rectangles, files are denoted by rectangles and they follow color scheme according to their level of nesting(for folders) and type of document(files).</i><br>
+
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/Low%20level%20diagram.png" alt="low level structure">
 
 
 
