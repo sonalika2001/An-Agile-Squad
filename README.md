@@ -135,14 +135,14 @@ In order to clone this repository and run it on your device, the above mentioned
 ## High Level Folder Structure
 This is the structure specific to the <b> lib </b> folder, since this is where all the code is written. The other folders are non-modifiable.<br>
 <i>The folders are denoted by rounded rectangles and follow color scheme according to level of nesting.</i><br><br>
-<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/High%20Level%20Structure.png" alt="high level folder structure" ><br>
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/High%20Level%20Structure.png" alt="high level folder structure" ><br>
 
 
 ## Low Level Folder/File Structure
 This is the structure specific to the <b> lib </b> folder, since this is where all the code is written. The other folders are non-modifiable.<br>
 <i>The folders are denoted by rounded rectangles, files are denoted by rectangles and they follow color scheme according to their level of nesting(for folders) and type of document(files).</i><br><br>
 
-<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/Low%20level%20diagram.png" alt="low level structure"><br>
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/Low%20level%20diagram.png" alt="low level structure"><br>
 
 
 
@@ -155,7 +155,7 @@ This is the structure specific to the <b> lib </b> folder, since this is where a
   <li>Provider package, at the core, is a wrapper around <a href="https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html">Inherited Widget</a>. Inherited widgets allow passing data down the widget tree without having to rebuild the intervening parts. </li>
   </ul><br>
  <i> A high level state tree of An Agile Squad has been shown below. The states which have been lifted up by Provider are denoted by a parallelogram while all other states are represented by ellipses.</i><br><br>
- <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/state%20diagram.png" alt="state tree"><br>
+ <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/state%20diagram.png" alt="state tree"><br>
   
 
 ## Future Improvements and Upcoming Features
