@@ -174,9 +174,8 @@ This is the structure specific to the <b> lib </b> folder, since this is where a
     </ul>
     <br>
     
-##
-
-                                                Developed and Documented by Sonalika Sahoo
+## 
+Developed and Documented by Sonalika Sahoo
   
 
   
