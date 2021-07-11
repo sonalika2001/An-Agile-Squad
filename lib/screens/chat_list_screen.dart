@@ -5,7 +5,7 @@ import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/models/contact.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
 import 'package:an_agile_squad/widgets/user%20widgets/contact_view.dart';
-import 'package:an_agile_squad/widgets/app%20bars/logs_app_bar.dart';
+import 'package:an_agile_squad/widgets/app%20bars/general_app_bar.dart';
 import 'package:an_agile_squad/widgets/chat%20widgets/new_chat_button.dart';
 import 'package:an_agile_squad/widgets/info%20providers/quiet_box.dart';
 import 'package:an_agile_squad/widgets/user%20widgets/user_circle.dart';

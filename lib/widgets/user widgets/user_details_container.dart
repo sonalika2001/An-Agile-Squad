@@ -2,7 +2,7 @@ import 'package:an_agile_squad/backend/firebase%20methods/auth_methods.dart';
 import 'package:an_agile_squad/enum/user_state.dart';
 import 'package:an_agile_squad/provider/user_provider.dart';
 import 'package:an_agile_squad/screens/login_screen.dart';
-import 'package:an_agile_squad/widgets/app%20bars/app_bar.dart';
+import 'package:an_agile_squad/widgets/app%20bars/custom_app_bar.dart';
 import 'package:an_agile_squad/widgets/logo%20widgets/shimmering_logo.dart';
 import 'package:an_agile_squad/widgets/user%20widgets/user_details_body.dart';
 import 'package:flutter/material.dart';

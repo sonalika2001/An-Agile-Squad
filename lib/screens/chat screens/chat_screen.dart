@@ -11,7 +11,7 @@ import 'package:an_agile_squad/provider/image_upload_provider.dart';
 import 'package:an_agile_squad/utils/call_utilities.dart';
 import 'package:an_agile_squad/utils/permissions.dart';
 import 'package:an_agile_squad/utils/utilities.dart';
-import 'package:an_agile_squad/widgets/app%20bars/app_bar.dart';
+import 'package:an_agile_squad/widgets/app%20bars/custom_app_bar.dart';
 import 'package:an_agile_squad/widgets/chat%20widgets/cached_image.dart';
 import 'package:an_agile_squad/widgets/chat%20widgets/modal_tile.dart';
 import 'package:an_agile_squad/widgets/info%20providers/coming_soon.dart';

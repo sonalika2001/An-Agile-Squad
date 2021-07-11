@@ -1,5 +1,5 @@
 import 'package:an_agile_squad/constants/constants.dart';
-import 'package:an_agile_squad/widgets/app%20bars/app_bar.dart';
+import 'package:an_agile_squad/widgets/app%20bars/custom_app_bar.dart';
 import 'package:an_agile_squad/widgets/info%20providers/coming_soon.dart';
 import 'package:flutter/material.dart';
 
