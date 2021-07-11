@@ -128,8 +128,16 @@ This is the structure specific to the <b> lib </b> folder, since this is where a
 
 
 ## Low Level Folder/File Structure
+This is the structure specific to the <b> lib </b> folder, since this is where all the code is written. The other folders are non-modifiable. 
 
 ## Mobile Architecture and State Management
+<ul>
+  <li> Flutter applications use the <b> MVC (Model, View, Controller) Design pattern </b>, which is a popular mobile architecture. </li>
+  <li> Local state exists towards the lower end of the widget tree which global state is used across the app. In order to be able to use certain local states higher up in the widget tree efficiently, such that it is accessible by every state that requires it, we need to <b> lift state up </b>. This is the most vital part of <b> State Management. </b></li>
+  <li> <a href="https://pub.dev/packages/provider">Provider</a>, which is a state management package that works well with flutter applications has been used in An Agile Squad. This paackage decreases the complexity of the code significantly. </li>
+  <li> Provider moves states up to the top. Widgets then subscribe to the state, i.e they listen to any changes in that state and change their own state accordingly. </li>
+  <li>Provider package, at the core, is a wrapper around <a href="https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html">Inherited Widget</a>. Inherited widgets allow passing data down the widget tree without having to rebuild the intervening parts. </li>
+  </ul>
 
 ## Upcoming Features & Future Improvements
 
