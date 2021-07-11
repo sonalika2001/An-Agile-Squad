@@ -2,14 +2,14 @@
 
 An Agile Squad is a rudimentary clone of MS Teams built in sprints using SCRUM, an Agile methodology of software development. This is a <b>cross-platform mobile application</b> which enables users connect with each other instantly via text messages and video calls. 
 <br>
-An Agile Squad was developed as part of the Microsoft Engage 2021 Program organised by AceHacker and Microsoft. <br>
+An Agile Squad was developed as part of the Microsoft Engage 2021 Program organised by Ace Hacker and Microsoft. <br>
 
 ## Download and Usage
 
 <ul>  
   <li>The apks for various architectures can be accessed <a class=download_link
                href="https://sonalika2001.github.io/An-Agile-Squad-Website/"
-               download>here.</a> </li> 
+                                                            download>here.</a> </li> 
   <li>The minimum Android API level required to run the app is <b>16</b>.</li>
   <li>The minimum iOS version required to run the app is <b>8.0</b></li>
   <li>Device permissions are required to run the app on both Android and iOS.</li>
