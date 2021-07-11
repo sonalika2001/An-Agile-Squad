@@ -146,7 +146,24 @@ This is the structure specific to the <b> lib </b> folder, since this is where a
   <li>Provider package, at the core, is a wrapper around <a href="https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html">Inherited Widget</a>. Inherited widgets allow passing data down the widget tree without having to rebuild the intervening parts. </li>
   </ul>
 
-## Upcoming Features & Future Improvements
+## Future Improvements and Upcoming Features
+<ul>
+  <li> Adding more authentication methods would make login flexible and comfortable for users.</li>
+  <li> Options such such deleting and archiving chats can make the chat list more dynamic. </li>
+  <li> At present, the floating action button routes users to the main search screen. Another search functionality specific to the chat list could be added instead.</li>and
+  <li>Audio calls, voice messages and other media options can be integrated. Clear options for organising meetings/group calls can be added. At present, <b> if a third person video calls a person who is already a part of another video call, this third person is added to the same video call</b>, hence increasing the number of participants, which might not be favourable in many cases. Video call related functionalities such as screenshare, turning video off etc. can be incorparated as well.</li>
+  <li> Pictures sent in the chat could be viewed in full screen on clicking.</li>
+  <li> "user is typing..." can be displayed when the person on the other side of the chat is typing.</li>
+  <li> pickup screen can be scaled such that it appears at any screen in the user's device when a call is being received. The disposal functionality of the pickup screen can be improved. </li>
+  <li> Users can be provided with the option to switch between multiple themes. </li>
+  <li> Call notifications, push notifications etc. can be implemented so that user is interacting An Agile Squad even when not using it.</li>
+  <li> Device Contacts can be accessed and used to make calls and invite more people to use An Agile Squad. </li>
+  <li> The ability to create group chats/teams can be incorporated to make it closer to MS Teams.</li>
+    </ul>
+    <br>
+    
+##
+  
 
   
 
