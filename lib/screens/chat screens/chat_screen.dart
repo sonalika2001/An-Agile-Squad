@@ -91,8 +91,9 @@ class _ChatScreenState extends State<ChatScreen> {
                   alignment: Alignment.centerRight,
                   margin: EdgeInsets.only(right: 15),
                   child: CircularProgressIndicator(
-                    backgroundColor: kblueColor,
-                  ),
+              backgroundColor: kdarkBlueColor,
+              valueColor: new AlwaysStoppedAnimation<Color>(klightBlueColor),
+            ),
                 )
               : Container(),
           chatControls(),
