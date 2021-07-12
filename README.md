@@ -115,11 +115,11 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
   <li> The tiny circle that we see stacked at the <b>bottom right of a user's profile picture</b> is called a Presence Indicator. </li>
   <li> The color of the indicator conveys whether a user is <b>online(green), offline(red), or idle (orange)</b>. </li>
   <li> This functionality was built by <b>fetching a stream of user document snapshots</b> from firebase to get the status in real time and the records were updated whenever the status changes. </li> 
- </ul><br>
+ 
   <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/dot%20indicator/idle.jpeg" width=300 height=100  >
   <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/dot%20indicator/offline.jpeg" width=300 height=100  >
   <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/dot%20indicator/online.jpeg" width=300 height=100  >
- 
+ </ul>
   <br>
   </li>
   
