@@ -168,7 +168,7 @@ This is the structure specific to the <b> lib </b> folder, since this is where a
 This is the structure specific to the <b> lib </b> folder, since this is where all the code is written. The other folders are non-modifiable.<br>
 <i>The folders are denoted by rounded rectangles, files are denoted by rectangles and they follow color scheme according to their level of nesting(for folders) and type of document(files).</i><br><br>
 
-<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/Low%20level%20diagram.png" alt="low level structure"><br>
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/low%20level%20structure.png" alt="low level structure"><br>
 
 
 
