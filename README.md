@@ -196,11 +196,9 @@ This is the structure specific to the <b> lib </b> folder, since this is where a
   <li> Users can be provided with the option to switch between multiple themes. </li>
   <li> Call notifications, push notifications etc. can be implemented so that user is interacting An Agile Squad even when not using it.</li>
   <li> Device Contacts can be accessed and used to make calls and invite more people to use An Agile Squad. </li>
-  <li> The ability to create group chats/teams can be incorporated to make it closer to MS Teams.</li>
-    
-    <br>
+  <li> The ability to create group chats/teams can be incorporated to make it closer to MS Teams.</li><br>
     <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/coming_soon.jpeg" width=150 height=300  >
-    </ul>
+   </ul>
     
 ## 
 Developed and Documented by Sonalika Sahoo
