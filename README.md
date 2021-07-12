@@ -1,6 +1,6 @@
 # An Agile Squad
 
-An Agile Squad is a collaboration app inspired by Microsoft Teams. It was built in sprints using SCRUM, an Agile methodology of software development. This is a <b>cross-platform mobile application</b> which enables users to connect with each other instantly via text messages and video calls. 
+An Agile Squad is a user-friendly collaboration app inspired by Microsoft Teams. It was built in sprints using SCRUM, an Agile methodology of software development. This is a <b>cross-platform mobile application</b> which enables users to connect with each other instantly via text messages and video calls. It offers a plethora of functionalities that can be leveraged by users for a rich and substantial experience.
 <br>
 An Agile Squad was developed as part of the <a href="https://microsoft.acehacker.com/engage2021/index.html"> Microsoft Engage 2021 Program</a> organised by Ace Hacker and Microsoft. <br>
 
@@ -9,7 +9,7 @@ An Agile Squad was developed as part of the <a href="https://microsoft.acehacker
 <ul>  
   <li>The apks for various architectures can be accessed <a class=download_link
                href="https://sonalika2001.github.io/An-Agile-Squad-Website/"
-                                                            download>here.</a> </li> 
+                                                            >here.</a> </li> 
   <li>The minimum Android API level required to run the app is <b>16</b>.</li>
   <li>The minimum iOS version required to run the app is <b>8.0</b></li>
   <li>Device permissions are required to run the app on both Android and iOS.</li>
@@ -41,7 +41,7 @@ An Agile Squad was developed as part of the <a href="https://microsoft.acehacker
     <li> <a href="https://www.agora.io/en/">Agora</a> provides the <b>Agora RTC (Real-time Communication) SDK/Engine</b> for enabling real-time audio and video communications.</li><li> The video channel is initialised and rendered in a split screen view depending on the number of participants with the help of Agora Event Handlers and helper functions. <li>The users can also <b>mute and unmute</b> themselves and <b>switch b/w their front and back cameras</b>.</li>
   <li> A <b>pickup screen</b> containing the <b>user's profile picture, pick call and end call buttons</b> has been wrapped over the home screen and is triggered on the receiver's screen as soon as a video call is initiated by the caller.</li>
     <br>
-   <b>Important Note:</b><i> The temporary token provided by Agora is a must for the functionalities to work properly. These expire every 24 hours and will hence be the only thing being updated alongside the newly generated apks after the submission deadline.</i>
+   <b>Important Note:</b><i> The temporary token provided by Agora is a must for the functionalities to work properly. These expire every 24 hours due to which the APKs will be regularly updated <a href="https://sonalika2001.github.io/An-Agile-Squad-Website/">here</a>.</i>
  <br><br>
   <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/video-calling/pickup.jpeg" width=150 height=300 >
   <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/video-calling/two_participants.jpeg" width=150 height=300 > 
