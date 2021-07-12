@@ -40,12 +40,17 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
     <li>This functionality allows <b>a minimum of 2</b> and <b>a maximum of 5 users</b> to engage in a video conversation at the same time. </li>
     <li> <a href="https://www.agora.io/en/">Agora</a> provides the <b>Agora RTC (Real-time Communication) SDK/Engine</b> for enabling real-time audio and video communications.</li><li> The video channel is initialised and rendered in a split screen view depending on the number of participants with the help of Agora Event Handlers and helper functions. <li>The users can also <b>mute and unmute</b> themselves and <b>switch b/w their front and back cameras</b>.</li>
   <li> A <b>pickup screen</b> containing the <b>user's profile picture, pick call and end call buttons</b> has been wrapped over the home screen and is triggered on the receiver's screen as soon as a video call is initiated by the caller.</li>
-    </ul><br>
+    <br>
+   <b>Important Note:</b><i> The temporary token provided by Agora is a must for the functionalities to work properly. These expire every 24 hours and will hence be the only thing being updated alongside the newly generated apks after the submission deadline.</i>
+ <br><br>
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/video-calling/pickup.jpeg" width=150 height=300 >
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/video-calling/two_participants.jpeg" width=150 height=300 > 
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/video-calling/three_participants.jpeg" width=150 height=300 >
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/video-calling/four_participants.jpeg" width=150 height=300 >
+  </ul><br>
   
-  
-  
-  <b>Important Note:</b><i> The temporary token provided by Agora is a must for the functionalities to work properly. These expire every 24 hours and will hence be the only thing being updated alongside the newly generated apks after the submission deadline.</i>
- </li>
+  </li>
+ 
   
   <h3><li> Chat </h3>
   <ul>
@@ -59,8 +64,13 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
   <li> <b>Chat tiles are added</b> to the chat screen whenever a conversation is initiated with a certain user. These chat tiles display the username, profile picture of the user and the <b>latest message</b> that was sent in the conversation.
   </li>
   <li> <a href="https://firebase.google.com/docs/firestore/">Firebase Cloud Firestore</a> has been used to store messages to the cloud.</li>
-</ul>
-   
+<br>
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/chat/chat_list.jpeg" width=150 height=300  >
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/chat/chat_screen.jpeg" width=150 height=300 >
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/chat/typing.jpeg" width=150 height=300 >
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/chat/media.jpeg" width=150 height=300 >
+<img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/chat/pictures.jpeg" width=150 height=300 >
+  </ul> <br>
   
   </li>
   
@@ -71,16 +81,19 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
   <li> Every log has the <b>name & profile picture (of the user at the other end) and the date</b> when the call was made.</li> 
   <li> <b>Each log can be deleted</b> whenever the user wishes to. Long pressing on the log tile triggers a pop up asking the user whether they wish to delete the log(yes) or not(no).</li>
   <li><a href="https://pub.dev/packages/sqflite"> Sqflite</a>, an SQL database and <a href="https://pub.dev/packages/hive">Hive</a>, a NoSQL database, both have been incorporated into the app due to their at par performance. One can switch between the two by using a bool. By default, Hive is being used to locally store the logs.</li>
-  <li>The database of a user is closed as soon as the user logs out. This ensures that the logs of that user aren't reflected in the account of any other user logging in from the same device.</li></ul>
-    
+  <li>The database of a user is closed as soon as the user logs out. This ensures that the logs of that user aren't reflected in the account of any other user logging in from the same device.</li><br>
+ <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/log/log.jpeg" width=150 height=300  >
+ <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/log/deletelog.jpeg" width=150 height=300  >
+   </ul> <br>
   </li>
   
   <h3><li>Search </h3>
   <ul>
   <li> The search functionality lets the users search for other users from among those who have logged into the app at any point of time, which in some sense means that they have signed up for An Agile Squad.</li>
   <li> The search functionality can be accessed from the search icon on the app bar as well as the floating icon button on the chat list screen.</li>
-  <li> This functionality parses the email id and provides instant results. On selecting any search result, the user is routed to the existing(if present)/empty chat screen with the resultant user.</li></ul>
-  
+  <li> This functionality parses the email id and provides instant results. On selecting any search result, the user is routed to the existing(if present)/empty chat screen with the resultant user.</li><br>
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/search/search.jpeg" height=300 width=150>
+  </ul><br>
   </li>
   
   
@@ -91,14 +104,23 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
   <li> A majority of features of this app are dependent on user authentication, since the user information is used for various functionalities and UI elements.</li>
   <li> The user's initials are parsed and displayed at the centre of the app bar as a <b>user circle</b>, similar to that in Microsoft Teams. Clicking on this leads to the <b>user details screen</b> which can be dismissed by swiping down. </li>
   <li> The users can also <b>log out </b> from the log out button on the user details screen. </li>
-  <li> <a href="https://firebase.google.com/docs/auth/">Firebase Authentication</a> has been used to implement this feature. </li></ul>
+  <li> <a href="https://firebase.google.com/docs/auth/">Firebase Authentication</a> has been used to implement this feature. </li><br>
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/auth/sign_in.jpeg" width=150 height=300  >
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/auth/sign_out.jpeg" width=150 height=300  >
+  </ul><br>
  </li>
   
   <h3><li> Presence Indicator </h3>
   <ul>
   <li> The tiny circle that we see stacked at the <b>bottom right of a user's profile picture</b> is called a Presence Indicator. </li>
   <li> The color of the indicator conveys whether a user is <b>online(green), offline(red), or idle (orange)</b>. </li>
-  <li> This functionality was built by <b>fetching a stream of user document snapshots</b> from firebase to get the status in real time and the records were updated whenever the status changes. </li> </ul>
+  <li> This functionality was built by <b>fetching a stream of user document snapshots</b> from firebase to get the status in real time and the records were updated whenever the status changes. </li> 
+ </ul><br>
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/dot%20indicator/idle.jpeg" width=300 height=100  >
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/dot%20indicator/offline.jpeg" width=300 height=100  >
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/dot%20indicator/online.jpeg" width=300 height=100  >
+ 
+  <br>
   </li>
   
   <h3><li> User Interface/Experience </h3>
@@ -111,7 +133,11 @@ An Agile Squad was developed as part of the Microsoft Engage 2021 Program organi
   <li> The <b>information boxes</b> that appear on the various screens the first time a user uses An Agile Squad also help users understand the app. The <b>circular progress indicators</b> are a necessity to let the user know that their data is being retrieved at the moment and will soon be displayed. </li>
   <li> The logo of the app represents its goal. </li>
   <li> Lastly, the app's name originates from the project management philosophy that was used to build the app, namely <b>Agile</b> and from the fact that it represents a clone of MS 'Teams' (synonymous to Squad).</li>
-</ul>
+<br>
+ <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/UI/quietbox_call.jpeg" width=150 height=300  >
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/UI/quietbox_log.jpeg" width=150 height=300  >
+  </ul>
+  <br>
   </li>
   
   
@@ -171,8 +197,10 @@ This is the structure specific to the <b> lib </b> folder, since this is where a
   <li> Call notifications, push notifications etc. can be implemented so that user is interacting An Agile Squad even when not using it.</li>
   <li> Device Contacts can be accessed and used to make calls and invite more people to use An Agile Squad. </li>
   <li> The ability to create group chats/teams can be incorporated to make it closer to MS Teams.</li>
-    </ul>
+    
     <br>
+    <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/coming_soon.jpeg" width=150 height=300  >
+    </ul>
     
 ## 
 Developed and Documented by Sonalika Sahoo
