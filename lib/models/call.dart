@@ -1,3 +1,5 @@
+
+//storing and retreiving call properties to and from a map for convenience of various functions
 class Call {
   String callerId;
   String callerName;

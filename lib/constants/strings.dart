@@ -1,3 +1,5 @@
+//these are strings which are used in multiple files across the code
+
 const String kmessagesCollection = "messages";
 const String kusersCollection = "users";
 const String kcallConnection = "call";

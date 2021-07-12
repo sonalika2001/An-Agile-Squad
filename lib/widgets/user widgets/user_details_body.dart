@@ -4,6 +4,8 @@ import 'package:an_agile_squad/widgets/chat%20widgets/cached_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
+//displays the details of the user who is currently logged in. This is displayed when the user circle on the app bar is clicked.
 class UserDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

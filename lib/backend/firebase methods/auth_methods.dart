@@ -43,6 +43,7 @@ class AuthMethods {
   }
 
   Future<User> signIn() async {
+
     //Starts the interactive sign-in process and returns a Future instance i.e the user's response
     GoogleSignInAccount _signInAccount = await _googleSignIn.signIn();
     GoogleSignInAuthentication _signInAuthentication =

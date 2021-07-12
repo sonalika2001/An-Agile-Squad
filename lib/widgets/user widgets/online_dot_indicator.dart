@@ -30,7 +30,7 @@ class OnlineDotIndicator extends StatelessWidget {
 
     return Align(
       alignment: Alignment.bottomRight,
-      child: StreamBuilder<DocumentSnapshot>(
+      child: StreamBuilder<DocumentSnapshot>( //the user stream which is retrieved from firebase gives realtime state updates which are reflected in the app as the color of the dot indicator which the help of enums.
         stream: _authMethods.getUserStream(
           uid,
         ),

@@ -13,6 +13,7 @@ import 'package:an_agile_squad/widgets/user%20widgets/online_dot_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//this is used to display the chat title of each user. User details are retrieved from firebase using firebase_methods.dart
 class ContactView extends StatelessWidget {
   final Contact contact;
   final AuthMethods authMethods = AuthMethods();
@@ -69,7 +70,7 @@ class ViewLayout extends StatelessWidget {
             TextStyle(color: Colors.white, fontFamily: "Arial", fontSize: 19),
       ),
       subtitle: LastMessageContainer(
-        stream: chatMethods.fetchLastMessageBetween(
+        stream: chatMethods.fetchLastMessageBetween(  //used to display the latest message in every conversation
           senderId: userProvider.getUser.uid,
           receiverId: contact.uid,
         ),

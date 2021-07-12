@@ -2,6 +2,7 @@ import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/widgets/info%20providers/coming_soon.dart';
 import 'package:flutter/material.dart';
 
+//a customisation of the floating action button in order to include more than one button on the log screen.
 class FloatingColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

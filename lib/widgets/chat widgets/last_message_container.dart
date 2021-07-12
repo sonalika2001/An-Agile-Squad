@@ -2,6 +2,8 @@ import 'package:an_agile_squad/models/message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+
+//this is displayed in the chat tiles on the chat list screen
 class LastMessageContainer extends StatelessWidget {
   final stream;
 

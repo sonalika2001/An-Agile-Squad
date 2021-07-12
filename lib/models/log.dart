@@ -1,3 +1,4 @@
+//storing and retreiving log properties to and from a map for convenience of various functions
 class Log {
   int logId;
   String callerName;

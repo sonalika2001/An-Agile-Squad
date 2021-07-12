@@ -2,6 +2,8 @@ import 'package:an_agile_squad/constants/constants.dart';
 import 'package:an_agile_squad/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
+
+//this box is displayed on each screen when a new user logs in or when the screen is empty
 class QuietBox extends StatefulWidget {
 
   final String heading;

@@ -48,6 +48,7 @@ class Permissions {
     }
   }
 
+//handling cases where permissions aren't given
   static void _handleInvalidPermissions(
     PermissionStatus cameraPermissionStatus,
     PermissionStatus microphonePermissionStatus,

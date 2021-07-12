@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     
-    return MultiProvider(
+    return MultiProvider(  //lifting state up; setting up a notifiers that notifies listeners below in the state tree of any changes
       providers: [
         ChangeNotifierProvider(create: (_) => ImageUploadProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),

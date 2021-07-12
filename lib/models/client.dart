@@ -1,3 +1,4 @@
+//storing and retreiving user i.e client side properties to and from a map for convenience of various functions
 class Client {
   String uid;
   String name;

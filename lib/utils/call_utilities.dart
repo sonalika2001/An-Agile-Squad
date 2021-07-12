@@ -21,7 +21,7 @@ class CallUtils {
       receiverId: to.uid,
       receiverName: to.name,
       receiverPic: to.profilePhoto,
-      channelId: Random().nextInt(1000).toString(), //random number b/w 0-1000
+      channelId: Random().nextInt(1000).toString(), //random number b/w 0-1000; not necessary for agora but can be used for connecting with a personal backend implementation
     );
 
     Log log = Log(

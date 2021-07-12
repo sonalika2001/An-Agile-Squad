@@ -3,6 +3,7 @@ import 'package:an_agile_squad/widgets/app%20bars/custom_app_bar.dart';
 import 'package:an_agile_squad/widgets/info%20providers/coming_soon.dart';
 import 'package:flutter/material.dart';
 
+// the app bar which is used on the log screen and all other major screens that will be released in future.
 class GeneralAppBar extends StatelessWidget implements PreferredSizeWidget {
   final title;
   final List<Widget> actions;

@@ -100,6 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+//carries out google authentication and adds user details to the database.Routes user to the home screen thereafter.
   void authenticateUser(User user) {
     authMethods.authenticateUser(user).then((isNewUser) {
       setState(() {

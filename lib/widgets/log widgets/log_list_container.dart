@@ -18,6 +18,7 @@ class _LogListContainerState extends State<LogListContainer> {
     Icon _icon;
     double _iconSize = 15;
 
+//logo displayed according the category of calls - dialled, received, missed.
     switch (callStatus) {
       case kCallStatusDialled:
         _icon = Icon(
@@ -52,6 +53,7 @@ class _LogListContainerState extends State<LogListContainer> {
 
   @override
   Widget build(BuildContext context) {
+    //retrieves the information of the user/s at the other end of the call that had been missed/dialled/received and displays it
     return FutureBuilder<dynamic>(
       future: LogRepository.getLogs(),
       builder: (BuildContext context, snapshot) {
@@ -89,7 +91,7 @@ class _LogListContainerState extends State<LogListContainer> {
                       actions: [
                         FlatButton(
                           child: Text("YES"),
-                          onPressed: () async {
+                          onPressed: () async {  //deletes a call log and updates the state so that the changes are reflected
                             Navigator.maybePop(context);
                             await LogRepository.deleteLogs(i);
                             if (mounted) {

@@ -31,7 +31,7 @@ class UserCircle extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Text(
-                Utils.getInitials(userProvider.getUser.name),
+                Utils.getInitials(userProvider.getUser.name), //displaying the initials of the user who is logged in
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: klightBlueColor,
@@ -41,7 +41,7 @@ class UserCircle extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomRight,
-              child: Container(
+              child: Container(    //adding the presence indicator
                 height: 12,
                 width: 12,
                 decoration: BoxDecoration(
