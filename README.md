@@ -105,8 +105,8 @@ An Agile Squad was developed as part of the <a href="https://microsoft.acehacker
   <li> The user's initials are parsed and displayed at the centre of the app bar as a <b>user circle</b>, similar to that in Microsoft Teams. Clicking on this leads to the <b>user details screen</b> which can be dismissed by swiping down. </li>
   <li> The users can also <b>log out </b> from the log out button on the user details screen. </li>
   <li> <a href="https://firebase.google.com/docs/auth/">Firebase Authentication</a> has been used to implement this feature. </li><br>
-  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/auth/sign_in.jpeg" width=150 height=300  >
-  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/auth/sign_out.jpeg" width=150 height=300  >
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/auth/login.jpeg" width=150 height=300  >
+  <img src="https://github.com/sonalika2001/An-Agile-Squad/blob/master/screenshots%20and%20diagrams/auth/logout.jpeg" width=150 height=300  >
   </ul><br>
  </li>
   
